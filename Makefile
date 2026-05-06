@@ -3,10 +3,10 @@ CFLAGS = -Wall -Wextra -std=c++20 -I include
 
 SRCS = tests/test_main.cpp tests/test.cpp tests/assert.cpp
 FORMAT_FILES = include/*.hpp tests/*.cpp tests/*.hpp
-TARGET = tests
+TARGET = test_runner
 
 all: format $(TARGET)
-	bash -c "./$(TARGET)"
+	./$(TARGET)
 
 $(TARGET): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $^

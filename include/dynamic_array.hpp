@@ -29,4 +29,12 @@ class DynamicArray
             data[i] = items[i];
         }
     }
+    DynamicArray(const DynamicArray<T>& other) : DynamicArray{other.data, other.size}
+    {
+    }
+
+    ~DynamicArray()
+    {
+        delete[] data;
+    }
 };

@@ -73,3 +73,10 @@ void test_dynamic_array_constructors()
     DynamicArray<int> c(items);
     assert_func(true);
 }
+void test_dynamic_array_copy()
+{
+    int items[] = {1, 2, 3};
+    DynamicArray<int> a(items);
+    DynamicArray<int> b(a);
+    assert_func(true);
+}

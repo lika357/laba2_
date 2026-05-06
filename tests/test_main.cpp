@@ -11,6 +11,7 @@ int main()
     test_invalid_argument();
     test_null_pointer();
     test_dynamic_array_constructors();
+    test_dynamic_array_copy();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

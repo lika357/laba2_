@@ -31,5 +31,11 @@ int assert_(int function, const char* expr, const char* file, size_t line)
     }
 }
 
-size_t get_true_tests() { return true_count; }
-size_t get_failed_tests() { return failed_count; }
+size_t get_true_tests()
+{
+    return true_count;
+}
+size_t get_failed_tests()
+{
+    return failed_count;
+}

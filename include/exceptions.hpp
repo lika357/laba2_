@@ -32,3 +32,11 @@ class InvalidArgument : public Exceptions
     {
     }
 };
+
+class NullPointer : public Exceptions
+{
+   public:
+    NullPointer() : Exceptions{"Ошибка : передан пустой указатель"}
+    {
+    }
+};

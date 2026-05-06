@@ -47,3 +47,16 @@ void test_invalid_argument()
     }
     assert_func(caught);
 }
+void test_null_pointer()
+{
+    bool caught = false;
+    try
+    {
+        throw NullPointer{};
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+}

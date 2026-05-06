@@ -6,8 +6,7 @@ FORMAT_FILES = include/*.hpp tests/*.cpp tests/*.hpp
 TARGET = tests
 
 all: format $(TARGET)
-	chmod +x $(TARGET)
-	./$(TARGET)
+	bash -c "./$(TARGET)"
 
 $(TARGET): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $^

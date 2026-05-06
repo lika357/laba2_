@@ -1,3 +1,4 @@
+#include "../include/dynamic_array.hpp"
 #include "../include/exceptions.hpp"
 #include "assert.hpp"
 
@@ -59,4 +60,16 @@ void test_null_pointer()
         caught = true;
     }
     assert_func(caught);
+}
+void test_dynamic_array_constructors()
+{
+    DynamicArray<int> a(0);
+    assert_func(true);
+
+    DynamicArray<int> b(5);
+    assert_func(true);
+
+    int items[] = {1, 2, 3};
+    DynamicArray<int> c(items);
+    assert_func(true);
 }

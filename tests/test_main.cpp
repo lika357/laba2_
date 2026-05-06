@@ -10,6 +10,7 @@ int main()
     test_exception_catch_2();
     test_invalid_argument();
     test_null_pointer();
+    test_dynamic_array_constructors();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

@@ -34,3 +34,16 @@ void test_exception_catch_2()
     }
     assert_func(caught);
 }
+void test_invalid_argument()
+{
+    bool caught = false;
+    try
+    {
+        throw InvalidArgument{};
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+}

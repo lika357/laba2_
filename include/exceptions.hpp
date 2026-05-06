@@ -24,3 +24,11 @@ class IndexOutOfRange : public Exceptions
     {
     }
 };
+
+class InvalidArgument : public Exceptions
+{
+   public:
+    InvalidArgument() : Exceptions{"Ошибка : передан неверный аргумент"}
+    {
+    }
+};

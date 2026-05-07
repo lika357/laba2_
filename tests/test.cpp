@@ -202,3 +202,11 @@ void test_linked_list()
     LinkedList<int> list;
     assert_func(true);
 }
+void test_linked_list_append()
+{
+    LinkedList<int> list;
+    list.Append(10);
+    list.Append(20);
+    list.Append(30);
+    assert_func(true);
+}

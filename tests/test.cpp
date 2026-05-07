@@ -136,14 +136,63 @@ void test_dynamic_array_resize()
 {
     int items[] = {1, 2, 3};
     DynamicArray<int> a(items);
-    
+
     a.Resize(5);
     assert_func(a.GetSize() == 5);
     assert_func(a.Get(0) == 1);
     assert_func(a.Get(2) == 3);
-    
+
     a.Resize(2);
     assert_func(a.GetSize() == 2);
     assert_func(a.Get(0) == 1);
     assert_func(a.Get(1) == 2);
+}
+void test_dynamic_array_exceptions()
+{
+    DynamicArray<int> a(3);
+    bool caught = false;
+
+    try
+    {
+        a.Get(5);
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+
+    caught = false;
+    try
+    {
+        a.Set(5, 0);
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+
+    caught = false;
+    try
+    {
+        a[5] = 10;
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+
+    const DynamicArray<int> b(3);
+    caught = false;
+    try
+    {
+        b[5];
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
 }

@@ -19,6 +19,7 @@ int main()
     test_dynamic_array_size();
     test_dynamic_array_set();
     test_dynamic_array_resize();
+    test_dynamic_array_exceptions();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

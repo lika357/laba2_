@@ -10,3 +10,4 @@ void test_dynamic_array_copy();
 void test_dynamic_array_assign();
 void test_dynamic_array_index();
 void test_dynamic_array_const_index();
+void test_dynamic_array_get();

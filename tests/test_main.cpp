@@ -15,6 +15,7 @@ int main()
     test_dynamic_array_assign();
     test_dynamic_array_index();
     test_dynamic_array_const_index();
+    test_dynamic_array_get();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

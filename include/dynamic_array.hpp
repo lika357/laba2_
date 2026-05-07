@@ -72,4 +72,12 @@ class DynamicArray
         }
         return data[index];
     }
+    T Get(size_t index) const
+    {
+        if (index >= size)
+        {
+            throw IndexOutOfRange{};
+        }
+        return data[index];
+    }
 };

@@ -289,3 +289,10 @@ void test_linked_list_prepend()
     list.Prepend(10);
     assert_func(true);
 }
+void test_linked_list_insert()
+{
+    int items[] = {10, 30};
+    LinkedList<int> list(items);
+    list.InsertAt(20, 1);
+    assert_func(true);
+}

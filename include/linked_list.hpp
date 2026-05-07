@@ -163,4 +163,33 @@ class LinkedList
         head = newNode;
         length++;
     }
+    void InsertAt(T item, size_t index)
+    {
+        if (index > length)
+        {
+            throw IndexOutOfRange{};
+        }
+
+        if (index == 0)
+        {
+            Prepend(item);
+            return;
+        }
+
+        if (index == length)
+        {
+            Append(item);
+            return;
+        }
+
+        Node* newNode = new Node(item);
+        Node* current = head;
+        for (size_t i = 0; i < index - 1; i++)
+        {
+            current = current->next;
+        }
+        newNode->next = current->next;
+        current->next = newNode;
+        length++;
+    }
 };

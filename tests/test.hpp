@@ -7,3 +7,5 @@ void test_invalid_argument();
 void test_null_pointer();
 void test_dynamic_array_constructors();
 void test_dynamic_array_copy();
+void test_dynamic_array_assign();
+

@@ -80,3 +80,11 @@ void test_dynamic_array_copy()
     DynamicArray<int> b(a);
     assert_func(true);
 }
+void test_dynamic_array_assign()
+{
+    int items[] = {10, 20, 30};
+    DynamicArray<int> a(items);
+    DynamicArray<int> b(0);
+    b = a;
+    assert_func(true);
+}

@@ -40,4 +40,19 @@ class DynamicArray
     {
         delete[] data;
     }
+    DynamicArray<T>& operator=(const DynamicArray<T>& other)
+    {
+        if (this == &other)
+        {
+            return *this;
+        }
+        delete[] data;
+        size = other.size;
+        data = new T[size];
+        for (size_t i = 0; i < size; i++)
+        {
+            data[i] = other.data[i];
+        }
+        return *this;
+    }
 };

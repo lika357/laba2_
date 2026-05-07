@@ -84,4 +84,12 @@ class DynamicArray
     {
         return size;
     }
+    void Set(size_t index, T value)
+    {
+        if (index >= size)
+        {
+            throw IndexOutOfRange{};
+        }
+        data[index] = value;
+    }
 };

@@ -122,3 +122,13 @@ void test_dynamic_array_size()
     DynamicArray<int> b(items);
     assert_func(b.GetSize() == 3);
 }
+void test_dynamic_array_set()
+{
+    DynamicArray<int> a(3);
+    a.Set(0, 10);
+    a.Set(1, 20);
+    a.Set(2, 30);
+    assert_func(a.Get(0) == 10);
+    assert_func(a.Get(1) == 20);
+    assert_func(a.Get(2) == 30);
+}

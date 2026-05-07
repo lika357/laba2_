@@ -318,3 +318,75 @@ void test_linked_list_concat()
     assert_func(merged->Get(3) == 4);
     delete merged;
 }
+void test_linked_list_exceptions()
+{
+    LinkedList<int> empty;
+    bool caught = false;
+
+    try
+    {
+        empty.GetFirst();
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+
+    caught = false;
+    try
+    {
+        empty.GetLast();
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+
+    int items[] = {1, 2};
+    LinkedList<int> list(items);
+    caught = false;
+    try
+    {
+        list.Get(5);
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+
+    caught = false;
+    try
+    {
+        list.InsertAt(0, 5);
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+
+    caught = false;
+    try
+    {
+        list.Concat(nullptr);
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+
+    caught = false;
+    try
+    {
+        list[5];
+    }
+    catch (const Exceptions&)
+    {
+        caught = true;
+    }
+    assert_func(caught);
+}

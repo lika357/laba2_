@@ -212,4 +212,26 @@ class LinkedList
         }
         return result;
     }
+    LinkedList<T>* Concat(LinkedList<T>* other) const
+    {
+        if (other == nullptr)
+        {
+            throw NullPointer{};
+        }
+
+        LinkedList<T>* result = new LinkedList<T>();
+        Node* current = head;
+        while (current != nullptr)
+        {
+            result->Append(current->value);
+            current = current->next;
+        }
+        current = other->head;
+        while (current != nullptr)
+        {
+            result->Append(current->value);
+            current = current->next;
+        }
+        return result;
+    }
 };

@@ -30,3 +30,4 @@ void test_linked_list_length();
 void test_linked_list_prepend();
 void test_linked_list_insert();
 void test_linked_list_sublist();
+void test_linked_list_concat();

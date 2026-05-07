@@ -306,3 +306,15 @@ void test_linked_list_sublist()
     assert_func(sub->Get(2) == 40);
     delete sub;
 }
+void test_linked_list_concat()
+{
+    int a[] = {1, 2};
+    int b[] = {3, 4};
+    LinkedList<int> listA(a);
+    LinkedList<int> listB(b);
+    LinkedList<int>* merged = listA.Concat(&listB);
+    assert_func(merged->GetLength() == 4);
+    assert_func(merged->Get(0) == 1);
+    assert_func(merged->Get(3) == 4);
+    delete merged;
+}

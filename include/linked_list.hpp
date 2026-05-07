@@ -49,4 +49,13 @@ class LinkedList
             Append(items[i]);
         }
     }
+    LinkedList(const LinkedList<T>& other) : head{nullptr}, length{0}
+    {
+        Node* current = other.head;
+        while (current != nullptr)
+        {
+            Append(current->value);
+            current = current->next;
+        }
+    }
 };

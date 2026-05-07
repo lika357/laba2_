@@ -216,3 +216,10 @@ void test_linked_list_from_array()
     LinkedList<int> list(items);
     assert_func(true);
 }
+void test_linked_list_copy()
+{
+    int items[] = {1, 2, 3};
+    LinkedList<int> a(items);
+    LinkedList<int> b(a);
+    assert_func(true);
+}

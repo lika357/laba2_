@@ -118,4 +118,12 @@ class LinkedList
         }
         return current->value;
     }
+    T GetFirst() const
+    {
+        if (head == nullptr)
+        {
+            throw IndexOutOfRange{};
+        }
+        return head->value;
+    }
 };

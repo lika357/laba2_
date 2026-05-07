@@ -255,3 +255,9 @@ void test_linked_list_const_index()
     assert_func(list[1] == 20);
     assert_func(list[2] == 30);
 }
+void test_linked_list_first()
+{
+    int items[] = {10, 20, 30};
+    LinkedList<int> list(items);
+    assert_func(list.GetFirst() == 10);
+}

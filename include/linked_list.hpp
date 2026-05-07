@@ -192,4 +192,24 @@ class LinkedList
         current->next = newNode;
         length++;
     }
+    LinkedList<T>* GetSubList(size_t from, size_t to) const
+    {
+        if (from > to || to >= length)
+        {
+            throw InvalidArgument{};
+        }
+
+        LinkedList<T>* result = new LinkedList<T>();
+        Node* current = head;
+        for (size_t i = 0; i < from; i++)
+        {
+            current = current->next;
+        }
+        for (size_t i = from; i <= to; i++)
+        {
+            result->Append(current->value);
+            current = current->next;
+        }
+        return result;
+    }
 };

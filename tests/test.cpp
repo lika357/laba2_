@@ -296,3 +296,13 @@ void test_linked_list_insert()
     list.InsertAt(20, 1);
     assert_func(true);
 }
+void test_linked_list_sublist()
+{
+    int items[] = {10, 20, 30, 40, 50};
+    LinkedList<int> list(items);
+    LinkedList<int>* sub = list.GetSubList(1, 3);
+    assert_func(sub->GetLength() == 3);
+    assert_func(sub->Get(0) == 20);
+    assert_func(sub->Get(2) == 40);
+    delete sub;
+}

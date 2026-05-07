@@ -152,4 +152,8 @@ class LinkedList
         }
         return current->value;
     }
+    size_t GetLength() const
+    {
+        return length;
+    }
 };

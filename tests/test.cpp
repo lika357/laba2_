@@ -275,3 +275,9 @@ void test_linked_list_get()
     assert_func(list.Get(1) == 20);
     assert_func(list.Get(2) == 30);
 }
+void test_linked_list_length()
+{
+    int items[] = {10, 20, 30};
+    LinkedList<int> list(items);
+    assert_func(list.GetLength() == 3);
+}

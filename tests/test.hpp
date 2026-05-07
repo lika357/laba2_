@@ -25,3 +25,4 @@ void test_linked_list_index();
 void test_linked_list_const_index();
 void test_linked_list_first();
 void test_linked_list_last();
+void test_linked_list_get();

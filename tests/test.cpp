@@ -267,3 +267,11 @@ void test_linked_list_last()
     LinkedList<int> list(items);
     assert_func(list.GetLast() == 30);
 }
+void test_linked_list_get()
+{
+    int items[] = {10, 20, 30};
+    LinkedList<int> list(items);
+    assert_func(list.Get(0) == 10);
+    assert_func(list.Get(1) == 20);
+    assert_func(list.Get(2) == 30);
+}

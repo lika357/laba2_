@@ -139,4 +139,17 @@ class LinkedList
         }
         return current->value;
     }
+    T Get(size_t index) const
+    {
+        if (index >= length)
+        {
+            throw IndexOutOfRange{};
+        }
+        Node* current = head;
+        for (size_t i = 0; i < index; i++)
+        {
+            current = current->next;
+        }
+        return current->value;
+    }
 };

@@ -88,3 +88,20 @@ void test_dynamic_array_assign()
     b = a;
     assert_func(true);
 }
+void test_dynamic_array_index()
+{
+    int items[] = {10, 20, 30};
+    DynamicArray<int> a(items);
+    assert_func(a[0] == 10);
+    assert_func(a[1] == 20);
+    assert_func(a[2] == 30);
+}
+void test_dynamic_array_const_index()
+{
+    int items[] = {10, 20, 30};
+    const DynamicArray<int> a(items);
+    
+    assert_func(a[0] == 10);
+    assert_func(a[1] == 20);
+    assert_func(a[2] == 30);
+}

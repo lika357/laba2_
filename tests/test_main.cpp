@@ -13,7 +13,8 @@ int main()
     test_dynamic_array_constructors();
     test_dynamic_array_copy();
     test_dynamic_array_assign();
-
+    test_dynamic_array_index();
+    test_dynamic_array_const_index();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

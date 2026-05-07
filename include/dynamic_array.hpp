@@ -55,4 +55,21 @@ class DynamicArray
         }
         return *this;
     }
+    T& operator[](size_t index)
+    {
+        if (index >= size)
+        {
+            throw IndexOutOfRange{};
+        }
+        return data[index];
+    }
+
+    const T& operator[](size_t index) const
+    {
+        if (index >= size)
+        {
+            throw IndexOutOfRange{};
+        }
+        return data[index];
+    }
 };

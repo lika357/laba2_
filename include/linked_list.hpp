@@ -67,4 +67,28 @@ class LinkedList
             delete temp;
         }
     }
+    LinkedList<T>& operator=(const LinkedList<T>& other)
+    {
+        if (this == &other)
+        {
+            return *this;
+        }
+
+        while (head != nullptr)
+        {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+        length = 0;
+
+        Node* current = other.head;
+        while (current != nullptr)
+        {
+            Append(current->value);
+            current = current->next;
+        }
+
+        return *this;
+    }
 };

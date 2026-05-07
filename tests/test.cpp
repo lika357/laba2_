@@ -231,3 +231,11 @@ void test_linked_list_destructor()
     }
     assert_func(true);
 }
+void test_linked_list_assignment()
+{
+    int items[] = {10, 20, 30};
+    LinkedList<int> a(items);
+    LinkedList<int> b;
+    b = a;
+    assert_func(true);
+}

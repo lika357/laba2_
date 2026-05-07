@@ -25,6 +25,7 @@ int main()
     test_linked_list_from_array();
     test_linked_list_copy();
     test_linked_list_destructor();
+    test_linked_list_assignment();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

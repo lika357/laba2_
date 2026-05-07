@@ -13,3 +13,4 @@ void test_dynamic_array_const_index();
 void test_dynamic_array_get();
 void test_dynamic_array_size();
 void test_dynamic_array_set();
+void test_dynamic_array_resize();

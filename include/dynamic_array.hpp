@@ -92,4 +92,24 @@ class DynamicArray
         }
         data[index] = value;
     }
+    void Resize(size_t newSize)
+    {
+        T* newData = new T[newSize];
+        size_t copyLen;
+        if (newSize < size)
+        {
+            copyLen = newSize;
+        }
+        else
+        {
+            copyLen = size;
+        }
+        for (size_t i = 0; i < copyLen; i++)
+        {
+            newData[i] = data[i];
+        }
+        delete[] data;
+        data = newData;
+        size = newSize;
+    }
 };

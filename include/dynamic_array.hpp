@@ -80,4 +80,8 @@ class DynamicArray
         }
         return data[index];
     }
+    size_t GetSize() const
+    {
+        return size;
+    }
 };

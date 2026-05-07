@@ -16,6 +16,7 @@ int main()
     test_dynamic_array_index();
     test_dynamic_array_const_index();
     test_dynamic_array_get();
+    test_dynamic_array_size();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

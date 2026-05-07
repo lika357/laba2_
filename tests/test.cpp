@@ -1,5 +1,6 @@
 #include "../include/dynamic_array.hpp"
 #include "../include/exceptions.hpp"
+#include "../include/linked_list.hpp"
 #include "assert.hpp"
 
 void test_exception_what()
@@ -195,4 +196,9 @@ void test_dynamic_array_exceptions()
         caught = true;
     }
     assert_func(caught);
+}
+void test_linked_list()
+{
+    LinkedList<int> list;
+    assert_func(true);
 }

@@ -15,3 +15,4 @@ void test_dynamic_array_size();
 void test_dynamic_array_set();
 void test_dynamic_array_resize();
 void test_dynamic_array_exceptions();
+void test_linked_list();

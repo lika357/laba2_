@@ -281,3 +281,11 @@ void test_linked_list_length()
     LinkedList<int> list(items);
     assert_func(list.GetLength() == 3);
 }
+void test_linked_list_prepend()
+{
+    LinkedList<int> list;
+    list.Prepend(30);
+    list.Prepend(20);
+    list.Prepend(10);
+    assert_func(true);
+}

@@ -27,3 +27,4 @@ void test_linked_list_first();
 void test_linked_list_last();
 void test_linked_list_get();
 void test_linked_list_length();
+void test_linked_list_prepend();

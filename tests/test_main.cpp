@@ -32,6 +32,7 @@ int main()
     test_linked_list_last();
     test_linked_list_get();
     test_linked_list_length();
+    test_linked_list_prepend();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

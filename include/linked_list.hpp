@@ -156,4 +156,11 @@ class LinkedList
     {
         return length;
     }
+    void Prepend(T item)
+    {
+        Node* newNode = new Node(item);
+        newNode->next = head;
+        head = newNode;
+        length++;
+    }
 };

@@ -22,6 +22,7 @@ int main()
     test_dynamic_array_exceptions();
     test_linked_list();
     test_linked_list_append();
+    test_linked_list_from_array();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

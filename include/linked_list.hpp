@@ -41,4 +41,12 @@ class LinkedList
         }
         length++;
     }
+    template <size_t N>
+    LinkedList(T (&items)[N]) : head{nullptr}, length{0}
+    {
+        for (size_t i = 0; i < N; i++)
+        {
+            Append(items[i]);
+        }
+    }
 };

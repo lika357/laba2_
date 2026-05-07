@@ -210,3 +210,9 @@ void test_linked_list_append()
     list.Append(30);
     assert_func(true);
 }
+void test_linked_list_from_array()
+{
+    int items[] = {10, 20, 30};
+    LinkedList<int> list(items);
+    assert_func(true);
+}

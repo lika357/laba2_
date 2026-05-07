@@ -19,3 +19,4 @@ void test_linked_list();
 void test_linked_list_append();
 void test_linked_list_from_array();
 void test_linked_list_copy();
+void test_linked_list_destructor();

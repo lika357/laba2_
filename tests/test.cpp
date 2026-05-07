@@ -223,3 +223,11 @@ void test_linked_list_copy()
     LinkedList<int> b(a);
     assert_func(true);
 }
+void test_linked_list_destructor()
+{
+    int items[] = {1, 2, 3};
+    {
+        LinkedList<int> list(items);
+    }
+    assert_func(true);
+}

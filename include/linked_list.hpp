@@ -58,4 +58,13 @@ class LinkedList
             current = current->next;
         }
     }
+    ~LinkedList()
+    {
+        while (head != nullptr)
+        {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
 };

@@ -126,4 +126,17 @@ class LinkedList
         }
         return head->value;
     }
+    T GetLast() const
+    {
+        if (head == nullptr)
+        {
+            throw IndexOutOfRange{};
+        }
+        Node* current = head;
+        while (current->next != nullptr)
+        {
+            current = current->next;
+        }
+        return current->value;
+    }
 };

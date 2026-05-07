@@ -21,3 +21,5 @@ void test_linked_list_from_array();
 void test_linked_list_copy();
 void test_linked_list_destructor();
 void test_linked_list_assignment();
+void test_linked_list_index();
+void test_linked_list_const_index();

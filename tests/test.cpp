@@ -239,3 +239,19 @@ void test_linked_list_assignment()
     b = a;
     assert_func(true);
 }
+void test_linked_list_index()
+{
+    int items[] = {10, 20, 30};
+    LinkedList<int> list(items);
+    assert_func(list[0] == 10);
+    assert_func(list[1] == 20);
+    assert_func(list[2] == 30);
+}
+void test_linked_list_const_index()
+{
+    int items[] = {10, 20, 30};
+    const LinkedList<int> list(items);
+    assert_func(list[0] == 10);
+    assert_func(list[1] == 20);
+    assert_func(list[2] == 30);
+}

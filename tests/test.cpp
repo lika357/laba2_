@@ -488,3 +488,16 @@ void test_list_sequence_get()
     assert_func(seq.Get(0) == 10);
     assert_func(seq.Get(2) == 30);
 }
+void test_array_sequence_length()
+{
+    int arr[] = {10, 20, 30};
+    ArraySequence<int> seq(arr);
+    assert_func(seq.GetLength() == 3);
+}
+
+void test_list_sequence_length()
+{
+    int arr[] = {10, 20, 30};
+    ListSequence<int> seq(arr);
+    assert_func(seq.GetLength() == 3);
+}

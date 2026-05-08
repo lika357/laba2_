@@ -46,4 +46,8 @@ class ListSequence : public Sequence<T>
     {
         return items->Get(index);
     }
+    size_t GetLength() const override
+    {
+        return items->GetLength();
+    }
 };

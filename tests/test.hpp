@@ -39,3 +39,5 @@ void test_array_sequence_from_array();
 void test_list_sequence_from_array();
 void test_array_sequence_copy();
 void test_list_sequence_copy();
+void test_array_sequence_destructor();
+void test_list_sequence_destructor();

@@ -433,3 +433,18 @@ void test_list_sequence_copy()
     ListSequence<int> b(a);
     assert_func(true);
 }
+void test_array_sequence_destructor()
+{
+    {
+        ArraySequence<int> seq;
+    }
+    assert_func(true);
+}
+
+void test_list_sequence_destructor()
+{
+    {
+        ListSequence<int> seq;
+    }
+    assert_func(true);
+}

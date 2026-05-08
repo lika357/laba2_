@@ -22,4 +22,8 @@ class ArraySequence : public Sequence<T>
     {
         items = new DynamicArray<T>(*other.items);
     }
+    ~ArraySequence()
+    {
+        delete items;
+    }
 };

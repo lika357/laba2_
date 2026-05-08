@@ -22,4 +22,8 @@ class ListSequence : public Sequence<T>
     {
         items = new LinkedList<T>(*other.items);
     }
+    ~ListSequence()
+    {
+        delete items;
+    }
 };

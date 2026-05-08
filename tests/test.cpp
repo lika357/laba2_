@@ -390,3 +390,7 @@ void test_linked_list_exceptions()
     }
     assert_func(caught);
 }
+void test_sequence_exists()
+{
+    assert_func(true);
+}

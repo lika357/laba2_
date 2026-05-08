@@ -37,6 +37,7 @@ int main()
     test_linked_list_sublist();
     test_linked_list_concat();
     test_linked_list_exceptions();
+    test_sequence_exists();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

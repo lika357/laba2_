@@ -448,3 +448,15 @@ void test_list_sequence_destructor()
     }
     assert_func(true);
 }
+void test_array_sequence_get_first()
+{
+    int arr[] = {10, 20, 30};
+    ArraySequence<int> seq(arr);
+    assert_func(seq.GetFirst() == 10);
+}
+void test_list_sequence_get_first()
+{
+    int arr[] = {10, 20, 30};
+    ListSequence<int> seq(arr);
+    assert_func(seq.GetFirst() == 10);
+}

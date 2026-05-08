@@ -26,4 +26,12 @@ class ArraySequence : public Sequence<T>
     {
         delete items;
     }
+    T GetFirst() const override
+    {
+        if (items->GetSize() == 0)
+        {
+            throw IndexOutOfRange{};
+        }
+        return items->Get(0);
+    }
 };

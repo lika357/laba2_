@@ -46,6 +46,8 @@ int main()
     test_list_sequence_copy();
     test_array_sequence_destructor();
     test_list_sequence_destructor();
+    test_array_sequence_get_first();
+    test_list_sequence_get_first();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

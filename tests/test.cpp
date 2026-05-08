@@ -1,6 +1,8 @@
 #include "../include/dynamic_array.hpp"
 #include "../include/exceptions.hpp"
 #include "../include/linked_list.hpp"
+#include "../include/sequence.hpp"
+#include "../include/array_sequence.hpp"
 #include "assert.hpp"
 
 void test_exception_what()
@@ -392,5 +394,10 @@ void test_linked_list_exceptions()
 }
 void test_sequence_exists()
 {
+    assert_func(true);
+}
+void test_array_sequence_empty()
+{
+    ArraySequence<int> seq;
     assert_func(true);
 }

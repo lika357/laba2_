@@ -473,3 +473,18 @@ void test_list_sequence_get_last()
     ListSequence<int> seq(arr);
     assert_func(seq.GetLast() == 30);
 }
+void test_array_sequence_get()
+{
+    int arr[] = {10, 20, 30};
+    ArraySequence<int> seq(arr);
+    assert_func(seq.Get(0) == 10);
+    assert_func(seq.Get(2) == 30);
+}
+
+void test_list_sequence_get()
+{
+    int arr[] = {10, 20, 30};
+    ListSequence<int> seq(arr);
+    assert_func(seq.Get(0) == 10);
+    assert_func(seq.Get(2) == 30);
+}

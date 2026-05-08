@@ -45,3 +45,5 @@ void test_array_sequence_get_first();
 void test_list_sequence_get_first();
 void test_array_sequence_get_last();
 void test_list_sequence_get_last();
+void test_array_sequence_get();
+void test_list_sequence_get();

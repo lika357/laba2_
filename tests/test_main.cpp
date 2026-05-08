@@ -50,6 +50,8 @@ int main()
     test_list_sequence_get_first();
     test_array_sequence_get_last();
     test_list_sequence_get_last();
+    test_array_sequence_get();
+    test_list_sequence_get();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

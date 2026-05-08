@@ -42,4 +42,8 @@ class ArraySequence : public Sequence<T>
         }
         return items->Get(items->GetSize() - 1);
     }
+    T Get(size_t index) const override
+    {
+        return items->Get(index);
+    }
 };

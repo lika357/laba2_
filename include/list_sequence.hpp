@@ -42,4 +42,8 @@ class ListSequence : public Sequence<T>
         }
         return items->GetLast();
     }
+    T Get(size_t index) const override
+    {
+        return items->Get(index);
+    }
 };

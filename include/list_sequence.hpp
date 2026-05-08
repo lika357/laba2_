@@ -1,6 +1,6 @@
 #pragma once
-#include "sequence.hpp"
 #include "linked_list.hpp"
+#include "sequence.hpp"
 
 template <class T>
 class ListSequence : public Sequence<T>

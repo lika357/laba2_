@@ -65,4 +65,13 @@ class ListSequence : public Sequence<T>
         items->InsertAt(item, index);
         return this;
     }
+    Sequence<T>* GetSubsequence(size_t startIndex, size_t endIndex) const override
+    {
+        ListSequence<T>* result = new ListSequence<T>();
+        for (size_t i = startIndex; i <= endIndex; i++)
+        {
+            result->Append(items->Get(i));
+        }
+        return result;
+    }
 };

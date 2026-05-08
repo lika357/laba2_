@@ -78,4 +78,13 @@ class ArraySequence : public Sequence<T>
         items->Set(index, item);
         return this;
     }
+    Sequence<T>* GetSubsequence(size_t startIndex, size_t endIndex) const override
+    {
+        ArraySequence<T>* result = new ArraySequence<T>();
+        for (size_t i = startIndex; i <= endIndex; i++)
+        {
+            result->Append(items->Get(i));
+        }
+        return result;
+    }
 };

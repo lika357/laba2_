@@ -60,6 +60,8 @@ int main()
     test_list_sequence_prepend();
     test_array_sequence_insert();
     test_list_sequence_insert();
+    test_array_sequence_subsequence();
+    test_list_sequence_subsequence();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

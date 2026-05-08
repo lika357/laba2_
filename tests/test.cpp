@@ -552,3 +552,24 @@ void test_list_sequence_insert()
     assert_func(seq.Get(1) == 20);
     assert_func(seq.GetLength() == 3);
 }
+void test_array_sequence_subsequence()
+{
+    int arr[] = {10, 20, 30, 40, 50};
+    ArraySequence<int> seq(arr);
+    Sequence<int>* sub = seq.GetSubsequence(1, 3);
+    assert_func(sub->GetLength() == 3);
+    assert_func(sub->Get(0) == 20);
+    assert_func(sub->Get(2) == 40);
+    delete sub;
+}
+
+void test_list_sequence_subsequence()
+{
+    int arr[] = {10, 20, 30, 40, 50};
+    ListSequence<int> seq(arr);
+    Sequence<int>* sub = seq.GetSubsequence(1, 3);
+    assert_func(sub->GetLength() == 3);
+    assert_func(sub->Get(0) == 20);
+    assert_func(sub->Get(2) == 40);
+    delete sub;
+}

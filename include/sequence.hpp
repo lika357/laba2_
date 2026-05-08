@@ -13,4 +13,5 @@ class Sequence
     virtual Sequence<T>* Append(T item) = 0;
     virtual Sequence<T>* Prepend(T item) = 0;
     virtual Sequence<T>* InsertAt(T item, size_t index) = 0;
+    virtual Sequence<T>* GetSubsequence(size_t startIndex, size_t endIndex) const = 0;
 };

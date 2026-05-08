@@ -37,3 +37,4 @@ void test_array_sequence_empty();
 void test_list_sequence_empty();
 void test_array_sequence_from_array();
 void test_list_sequence_from_array();
+void test_array_sequence_copy();

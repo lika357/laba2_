@@ -18,4 +18,8 @@ class ArraySequence : public Sequence<T>
     {
         items = new DynamicArray<T>(arr);
     }
+    ArraySequence(const ArraySequence<T>& other)
+    {
+        items = new DynamicArray<T>(*other.items);
+    }
 };

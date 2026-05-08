@@ -43,3 +43,5 @@ void test_array_sequence_destructor();
 void test_list_sequence_destructor();
 void test_array_sequence_get_first();
 void test_list_sequence_get_first();
+void test_array_sequence_get_last();
+void test_list_sequence_get_last();

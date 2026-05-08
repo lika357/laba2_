@@ -34,4 +34,12 @@ class ListSequence : public Sequence<T>
         }
         return items->GetFirst();
     }
+    T GetLast() const override
+    {
+        if (items->GetLength() == 0)
+        {
+            throw IndexOutOfRange{};
+        }
+        return items->GetLast();
+    }
 };

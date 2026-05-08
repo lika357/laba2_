@@ -34,4 +34,12 @@ class ArraySequence : public Sequence<T>
         }
         return items->Get(0);
     }
+    T GetLast() const override
+    {
+        if (items->GetSize() == 0)
+        {
+            throw IndexOutOfRange{};
+        }
+        return items->Get(items->GetSize() - 1);
+    }
 };

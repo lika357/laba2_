@@ -3,6 +3,7 @@
 #include "../include/linked_list.hpp"
 #include "../include/sequence.hpp"
 #include "../include/array_sequence.hpp"
+#include "../include/list_sequence.hpp"
 #include "assert.hpp"
 
 void test_exception_what()
@@ -399,5 +400,10 @@ void test_sequence_exists()
 void test_array_sequence_empty()
 {
     ArraySequence<int> seq;
+    assert_func(true);
+}
+void test_list_sequence_empty()
+{
+    ListSequence<int> seq;
     assert_func(true);
 }

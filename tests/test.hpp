@@ -34,3 +34,4 @@ void test_linked_list_concat();
 void test_linked_list_exceptions();
 void test_sequence_exists();
 void test_array_sequence_empty();
+void test_list_sequence_empty();

@@ -51,3 +51,5 @@ void test_array_sequence_length();
 void test_list_sequence_length();
 void test_array_sequence_append();
 void test_list_sequence_append();
+void test_array_sequence_prepend();
+void test_list_sequence_prepend();

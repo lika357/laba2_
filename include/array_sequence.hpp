@@ -56,4 +56,15 @@ class ArraySequence : public Sequence<T>
         items->Set(items->GetSize() - 1, item);
         return this;
     }
+    Sequence<T>* Prepend(T item) override
+    {
+        size_t oldSize = items->GetSize();
+        items->Resize(oldSize + 1);
+        for (size_t i = oldSize; i > 0; i--)
+        {
+            items->Set(i, items->Get(i - 1));
+        }
+        items->Set(0, item);
+        return this;
+    }
 };

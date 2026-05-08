@@ -56,6 +56,8 @@ int main()
     test_list_sequence_length();
     test_array_sequence_append();
     test_list_sequence_append();
+    test_array_sequence_prepend();
+    test_list_sequence_prepend();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

@@ -518,3 +518,20 @@ void test_list_sequence_append()
     assert_func(seq.GetLast() == 30);
     assert_func(seq.GetLength() == 3);
 }
+void test_array_sequence_prepend()
+{
+    int arr[] = {20, 30};
+    ArraySequence<int> seq(arr);
+    seq.Prepend(10);
+    assert_func(seq.GetFirst() == 10);
+    assert_func(seq.GetLength() == 3);
+}
+
+void test_list_sequence_prepend()
+{
+    int arr[] = {20, 30};
+    ListSequence<int> seq(arr);
+    seq.Prepend(10);
+    assert_func(seq.GetFirst() == 10);
+    assert_func(seq.GetLength() == 3);
+}

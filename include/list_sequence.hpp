@@ -55,4 +55,9 @@ class ListSequence : public Sequence<T>
         items->Append(item);
         return this;
     }
+    Sequence<T>* Prepend(T item) override
+    {
+        items->Prepend(item);
+        return this;
+    }
 };

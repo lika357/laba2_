@@ -50,4 +50,10 @@ class ArraySequence : public Sequence<T>
     {
         return items->GetSize();
     }
+    Sequence<T>* Append(T item) override
+    {
+        items->Resize(items->GetSize() + 1);
+        items->Set(items->GetSize() - 1, item);
+        return this;
+    }
 };

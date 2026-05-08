@@ -501,3 +501,20 @@ void test_list_sequence_length()
     ListSequence<int> seq(arr);
     assert_func(seq.GetLength() == 3);
 }
+void test_array_sequence_append()
+{
+    int arr[] = {10, 20};
+    ArraySequence<int> seq(arr);
+    seq.Append(30);
+    assert_func(seq.GetLast() == 30);
+    assert_func(seq.GetLength() == 3);
+}
+
+void test_list_sequence_append()
+{
+    int arr[] = {10, 20};
+    ListSequence<int> seq(arr);
+    seq.Append(30);
+    assert_func(seq.GetLast() == 30);
+    assert_func(seq.GetLength() == 3);
+}

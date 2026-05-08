@@ -50,4 +50,9 @@ class ListSequence : public Sequence<T>
     {
         return items->GetLength();
     }
+    Sequence<T>* Append(T item) override
+    {
+        items->Append(item);
+        return this;
+    }
 };

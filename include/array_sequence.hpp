@@ -67,4 +67,15 @@ class ArraySequence : public Sequence<T>
         items->Set(0, item);
         return this;
     }
+    Sequence<T>* InsertAt(T item, size_t index) override
+    {
+        size_t oldSize = items->GetSize();
+        items->Resize(oldSize + 1);
+        for (size_t i = oldSize; i > index; i--)
+        {
+            items->Set(i, items->Get(i - 1));
+        }
+        items->Set(index, item);
+        return this;
+    }
 };

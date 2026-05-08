@@ -60,4 +60,9 @@ class ListSequence : public Sequence<T>
         items->Prepend(item);
         return this;
     }
+    Sequence<T>* InsertAt(T item, size_t index) override
+    {
+        items->InsertAt(item, index);
+        return this;
+    }
 };

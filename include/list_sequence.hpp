@@ -13,4 +13,9 @@ class ListSequence : public Sequence<T>
     {
         items = new LinkedList<T>();
     }
+    template <size_t N>
+    ListSequence(T (&arr)[N])
+    {
+        items = new LinkedList<T>(arr);
+    }
 };

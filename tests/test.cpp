@@ -413,3 +413,9 @@ void test_array_sequence_from_array()
     ArraySequence<int> seq(arr);
     assert_func(true);
 }
+void test_list_sequence_from_array()
+{
+    int arr[] = {1, 2, 3};
+    ListSequence<int> seq(arr);
+    assert_func(true);
+}

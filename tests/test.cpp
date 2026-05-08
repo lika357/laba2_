@@ -426,3 +426,10 @@ void test_array_sequence_copy()
     ArraySequence<int> b(a);
     assert_func(true);
 }
+void test_list_sequence_copy()
+{
+    int arr[] = {1, 2, 3};
+    ListSequence<int> a(arr);
+    ListSequence<int> b(a);
+    assert_func(true);
+}

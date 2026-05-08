@@ -18,4 +18,8 @@ class ListSequence : public Sequence<T>
     {
         items = new LinkedList<T>(arr);
     }
+    ListSequence(const ListSequence<T>& other)
+    {
+        items = new LinkedList<T>(*other.items);
+    }
 };

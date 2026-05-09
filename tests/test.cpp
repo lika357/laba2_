@@ -621,3 +621,8 @@ void test_bit_proxy_read()
     BitProxy<> bit0(byte, 0);
     assert_func(bit0 == false);
 }
+void test_bit_empty()
+{
+    Bit<> b;
+    assert_func(true);
+}

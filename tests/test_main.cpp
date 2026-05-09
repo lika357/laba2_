@@ -67,6 +67,7 @@ int main()
     test_bit_proxy_exists();
     test_bit_proxy_assign();
     test_bit_proxy_read();
+    test_bit_empty();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

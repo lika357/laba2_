@@ -29,3 +29,15 @@ class BitProxy
         return (ref >> idx) & 1;
     }
 };
+
+template <typename T = unsigned char>
+class Bit
+{
+   private:
+    T value;
+
+   public:
+    Bit() : value{0}
+    {
+    }
+};

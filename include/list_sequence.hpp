@@ -74,4 +74,12 @@ class ListSequence : public Sequence<T>
         }
         return result;
     }
+    Sequence<T>* Concat(Sequence<T>* other) override
+    {
+        for (size_t i = 0; i < other->GetLength(); i++)
+        {
+            Append(other->Get(i));
+        }
+        return this;
+    }
 };

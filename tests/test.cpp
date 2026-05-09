@@ -573,3 +573,24 @@ void test_list_sequence_subsequence()
     assert_func(sub->Get(2) == 40);
     delete sub;
 }
+void test_array_sequence_concat()
+{
+    int a[] = {1, 2};
+    int b[] = {3, 4};
+    ArraySequence<int> seqA(a);
+    ArraySequence<int> seqB(b);
+    seqA.Concat(&seqB);
+    assert_func(seqA.GetLength() == 4);
+    assert_func(seqA.GetLast() == 4);
+}
+
+void test_list_sequence_concat()
+{
+    int a[] = {1, 2};
+    int b[] = {3, 4};
+    ListSequence<int> seqA(a);
+    ListSequence<int> seqB(b);
+    seqA.Concat(&seqB);
+    assert_func(seqA.GetLength() == 4);
+    assert_func(seqA.GetLast() == 4);
+}

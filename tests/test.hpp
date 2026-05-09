@@ -64,3 +64,4 @@ void test_bit_proxy_assign();
 void test_bit_proxy_read();
 void test_bit_empty();
 void test_bit_from_value();
+void test_bit_copy();

@@ -631,3 +631,9 @@ void test_bit_from_value()
     Bit<> b(5);
     assert_func(true);
 }
+void test_bit_copy()
+{
+    Bit<> a(5);
+    Bit<> b(a);
+    assert_func(true);
+}

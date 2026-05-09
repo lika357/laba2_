@@ -43,4 +43,7 @@ class Bit
     Bit(T val) : value{val}
     {
     }
+    Bit(const Bit& other) : value{other.value}
+    {
+    }
 };

@@ -27,4 +27,12 @@ class BitSequence
     {
         delete bits;
     }
+    Bit<T> GetFirst() const
+    {
+        if (bits->GetSize() == 0)
+        {
+            throw IndexOutOfRange{};
+        }
+        return bits->Get(0);
+    }
 };

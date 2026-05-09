@@ -76,3 +76,4 @@ void test_bit_sequence_from_array();
 void test_bit_assign();
 void test_bit_sequence_copy();
 void test_bit_sequence_destructor();
+void test_bit_sequence_get_first();

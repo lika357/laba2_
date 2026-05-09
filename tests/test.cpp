@@ -710,3 +710,9 @@ void test_bit_sequence_destructor()
     }
     assert_func(true);
 }
+void test_bit_sequence_get_first()
+{
+    Bit<> items[] = {Bit<>(5), Bit<>(0), Bit<>(3)};
+    BitSequence<> seq(items);
+    assert_func(seq.GetFirst().GetValue() == 5);
+}

@@ -67,3 +67,4 @@ void test_bit_from_value();
 void test_bit_copy();
 void test_bit_get_value();
 void test_bit_to_bool();
+void test_bit_and();

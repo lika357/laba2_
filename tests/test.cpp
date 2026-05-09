@@ -650,3 +650,10 @@ void test_bit_to_bool()
     Bit<> b(0);
     assert_func(b == false);
 }
+void test_bit_and()
+{
+    Bit<> a(5);
+    Bit<> b(3);
+    Bit<> c = a & b;
+    assert_func(c.GetValue() == 1);
+}

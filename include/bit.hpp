@@ -54,4 +54,10 @@ class Bit
     {
         return value != 0;
     }
+    Bit operator&(const Bit& other) const
+    {
+        T result = value & other.value;
+        Bit b(result);
+        return b;
+    }
 };

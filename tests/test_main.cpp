@@ -80,6 +80,7 @@ int main()
     test_bit_sequence_from_array();
     test_bit_assign();
     test_bit_sequence_copy();
+    test_bit_sequence_destructor();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

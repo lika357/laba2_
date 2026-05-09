@@ -703,3 +703,10 @@ void test_bit_sequence_copy()
     BitSequence<> b(a);
     assert_func(true);
 }
+void test_bit_sequence_destructor()
+{
+    {
+        BitSequence<> seq;
+    }
+    assert_func(true);
+}

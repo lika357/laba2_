@@ -23,4 +23,8 @@ class BitSequence
     {
         bits = new DynamicArray<Bit<T>>(*other.bits);
     }
+    ~BitSequence()
+    {
+        delete bits;
+    }
 };

@@ -72,4 +72,10 @@ class Bit
         Bit b(result);
         return b;
     }
+    Bit operator~() const
+    {
+        T result = ~value;
+        Bit b(result);
+        return b;
+    }
 };

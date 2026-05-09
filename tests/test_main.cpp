@@ -75,6 +75,7 @@ int main()
     test_bit_and();
     test_bit_or();
     test_bit_xor();
+    test_bit_not();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

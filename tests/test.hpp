@@ -70,3 +70,4 @@ void test_bit_to_bool();
 void test_bit_and();
 void test_bit_or();
 void test_bit_xor();
+void test_bit_not();

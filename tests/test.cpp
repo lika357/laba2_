@@ -671,3 +671,9 @@ void test_bit_xor()
     Bit<> c = a ^ b;
     assert_func(c.GetValue() == 6);
 }
+void test_bit_not()
+{
+    Bit<> a(5);
+    Bit<> b = ~a;
+    assert_func(b.GetValue() == 250);
+}

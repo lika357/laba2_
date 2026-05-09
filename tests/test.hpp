@@ -71,3 +71,4 @@ void test_bit_and();
 void test_bit_or();
 void test_bit_xor();
 void test_bit_not();
+void test_bit_sequence_empty();

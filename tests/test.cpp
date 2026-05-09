@@ -1,5 +1,6 @@
 #include "../include/array_sequence.hpp"
 #include "../include/bit.hpp"
+#include "../include/bit_sequence.hpp"
 #include "../include/dynamic_array.hpp"
 #include "../include/exceptions.hpp"
 #include "../include/linked_list.hpp"
@@ -676,4 +677,9 @@ void test_bit_not()
     Bit<> a(5);
     Bit<> b = ~a;
     assert_func(b.GetValue() == 250);
+}
+void test_bit_sequence_empty()
+{
+    BitSequence<> seq;
+    assert_func(true);
 }

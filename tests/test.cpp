@@ -626,3 +626,8 @@ void test_bit_empty()
     Bit<> b;
     assert_func(true);
 }
+void test_bit_from_value()
+{
+    Bit<> b(5);
+    assert_func(true);
+}

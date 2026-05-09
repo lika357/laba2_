@@ -40,4 +40,7 @@ class Bit
     Bit() : value{0}
     {
     }
+    Bit(T val) : value{val}
+    {
+    }
 };

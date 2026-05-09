@@ -14,4 +14,9 @@ class BitSequence
     {
         bits = new DynamicArray<Bit<T>>();
     }
+    template <size_t N>
+    BitSequence(Bit<T> (&arr)[N])
+    {
+        bits = new DynamicArray<Bit<T>>(arr);
+    }
 };

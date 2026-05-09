@@ -683,3 +683,16 @@ void test_bit_sequence_empty()
     BitSequence<> seq;
     assert_func(true);
 }
+void test_bit_sequence_from_array()
+{
+    Bit<> items[] = {Bit<>(1), Bit<>(0), Bit<>(1)};
+    BitSequence<> seq(items);
+    assert_func(true);
+}
+void test_bit_assign()
+{
+    Bit<> a(5);
+    Bit<> b;
+    b = a;
+    assert_func(b.GetValue() == 5);
+}

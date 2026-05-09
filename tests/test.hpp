@@ -72,3 +72,5 @@ void test_bit_or();
 void test_bit_xor();
 void test_bit_not();
 void test_bit_sequence_empty();
+void test_bit_sequence_from_array();
+void test_bit_assign();

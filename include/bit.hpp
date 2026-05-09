@@ -78,4 +78,13 @@ class Bit
         Bit b(result);
         return b;
     }
+    Bit& operator=(const Bit& other)
+    {
+        if (this == &other)
+        {
+            return *this;
+        }
+        value = other.value;
+        return *this;
+    }
 };

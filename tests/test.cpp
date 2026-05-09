@@ -696,3 +696,10 @@ void test_bit_assign()
     b = a;
     assert_func(b.GetValue() == 5);
 }
+void test_bit_sequence_copy()
+{
+    Bit<> items[] = {Bit<>(1), Bit<>(0), Bit<>(1)};
+    BitSequence<> a(items);
+    BitSequence<> b(a);
+    assert_func(true);
+}

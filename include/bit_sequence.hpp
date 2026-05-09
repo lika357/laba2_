@@ -19,4 +19,8 @@ class BitSequence
     {
         bits = new DynamicArray<Bit<T>>(arr);
     }
+    BitSequence(const BitSequence<T>& other)
+    {
+        bits = new DynamicArray<Bit<T>>(*other.bits);
+    }
 };

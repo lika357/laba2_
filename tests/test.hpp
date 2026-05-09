@@ -61,3 +61,4 @@ void test_array_sequence_concat();
 void test_list_sequence_concat();
 void test_bit_proxy_exists();
 void test_bit_proxy_assign();
+void test_bit_proxy_read();

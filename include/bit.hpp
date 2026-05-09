@@ -24,4 +24,8 @@ class BitProxy
         }
         return *this;
     }
+    operator bool() const
+    {
+        return (ref >> idx) & 1;
+    }
 };

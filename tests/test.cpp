@@ -605,10 +605,19 @@ void test_bit_proxy_assign()
 {
     unsigned char byte = 0;
     BitProxy<> bit(byte, 3);
-    
+
     bit = 1;
     assert_func(byte == 8);
-    
+
     bit = 0;
     assert_func(byte == 0);
+}
+void test_bit_proxy_read()
+{
+    unsigned char byte = 8;
+    BitProxy<> bit3(byte, 3);
+    assert_func(bit3 == true);
+
+    BitProxy<> bit0(byte, 0);
+    assert_func(bit0 == false);
 }

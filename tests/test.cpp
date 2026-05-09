@@ -662,5 +662,12 @@ void test_bit_or()
     Bit<> a(5);
     Bit<> b(3);
     Bit<> c = a | b;
-    assert_func(c.GetValue() == 7); 
+    assert_func(c.GetValue() == 7);
+}
+void test_bit_xor()
+{
+    Bit<> a(5);
+    Bit<> b(3);
+    Bit<> c = a ^ b;
+    assert_func(c.GetValue() == 6);
 }

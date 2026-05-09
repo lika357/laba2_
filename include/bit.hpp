@@ -67,9 +67,9 @@ class Bit
         return b;
     }
     Bit operator^(const Bit& other) const
-{
-    T result = value ^ other.value;
-    Bit b(result);
-    return b;
-}
+    {
+        T result = value ^ other.value;
+        Bit b(result);
+        return b;
+    }
 };

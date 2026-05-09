@@ -716,3 +716,9 @@ void test_bit_sequence_get_first()
     BitSequence<> seq(items);
     assert_func(seq.GetFirst().GetValue() == 5);
 }
+void test_bit_sequence_get_last()
+{
+    Bit<> items[] = {Bit<>(5), Bit<>(0), Bit<>(3)};
+    BitSequence<> seq(items);
+    assert_func(seq.GetLast().GetValue() == 3);
+}

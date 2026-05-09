@@ -82,6 +82,7 @@ int main()
     test_bit_sequence_copy();
     test_bit_sequence_destructor();
     test_bit_sequence_get_first();
+    test_bit_sequence_get_last();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

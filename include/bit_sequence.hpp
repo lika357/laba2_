@@ -35,4 +35,12 @@ class BitSequence
         }
         return bits->Get(0);
     }
+    Bit<T> GetLast() const
+    {
+        if (bits->GetSize() == 0)
+        {
+            throw IndexOutOfRange{};
+        }
+        return bits->Get(bits->GetSize() - 1);
+    }
 };

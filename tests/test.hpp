@@ -78,3 +78,4 @@ void test_bit_sequence_copy();
 void test_bit_sequence_destructor();
 void test_bit_sequence_get_first();
 void test_bit_sequence_get_last();
+void test_bit_sequence_get();

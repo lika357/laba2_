@@ -43,4 +43,8 @@ class BitSequence
         }
         return bits->Get(bits->GetSize() - 1);
     }
+    Bit<T> Get(size_t index) const
+    {
+        return bits->Get(index);
+    }
 };

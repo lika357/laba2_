@@ -50,4 +50,8 @@ class Bit
     {
         return value;
     }
+    operator bool() const
+    {
+        return value != 0;
+    }
 };

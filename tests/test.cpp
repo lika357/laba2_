@@ -642,3 +642,11 @@ void test_bit_get_value()
     Bit<> b(42);
     assert_func(b.GetValue() == 42);
 }
+void test_bit_to_bool()
+{
+    Bit<> a(5);
+    assert_func(a == true);
+
+    Bit<> b(0);
+    assert_func(b == false);
+}

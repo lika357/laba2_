@@ -71,6 +71,7 @@ int main()
     test_bit_from_value();
     test_bit_copy();
     test_bit_get_value();
+    test_bit_to_bool();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

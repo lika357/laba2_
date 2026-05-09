@@ -730,3 +730,9 @@ void test_bit_sequence_get()
     assert_func(seq.Get(1).GetValue() == 0);
     assert_func(seq.Get(2).GetValue() == 3);
 }
+void test_bit_sequence_length()
+{
+    Bit<> items[] = {Bit<>(1), Bit<>(0), Bit<>(1)};
+    BitSequence<> seq(items);
+    assert_func(seq.GetLength() == 3);
+}

@@ -46,4 +46,8 @@ class Bit
     Bit(const Bit& other) : value{other.value}
     {
     }
+    T GetValue() const
+    {
+        return value;
+    }
 };

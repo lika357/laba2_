@@ -637,3 +637,8 @@ void test_bit_copy()
     Bit<> b(a);
     assert_func(true);
 }
+void test_bit_get_value()
+{
+    Bit<> b(42);
+    assert_func(b.GetValue() == 42);
+}

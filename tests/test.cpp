@@ -4,6 +4,7 @@
 #include "../include/linked_list.hpp"
 #include "../include/list_sequence.hpp"
 #include "../include/sequence.hpp"
+#include "../include/bit.hpp"
 #include "assert.hpp"
 
 void test_exception_what()
@@ -593,4 +594,10 @@ void test_list_sequence_concat()
     seqA.Concat(&seqB);
     assert_func(seqA.GetLength() == 4);
     assert_func(seqA.GetLast() == 4);
+}
+void test_bit_proxy_exists()
+{
+    unsigned char byte = 0;
+    BitProxy<> proxy(byte, 0);
+    assert_func(true);
 }

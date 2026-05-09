@@ -60,4 +60,16 @@ class Bit
         Bit b(result);
         return b;
     }
+    Bit operator|(const Bit& other) const
+    {
+        T result = value | other.value;
+        Bit b(result);
+        return b;
+    }
+    Bit operator^(const Bit& other) const
+{
+    T result = value ^ other.value;
+    Bit b(result);
+    return b;
+}
 };

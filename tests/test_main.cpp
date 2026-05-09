@@ -65,6 +65,7 @@ int main()
     test_array_sequence_concat();
     test_list_sequence_concat();
     test_bit_proxy_exists();
+    test_bit_proxy_assign();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

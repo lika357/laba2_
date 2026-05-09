@@ -1,10 +1,10 @@
 #include "../include/array_sequence.hpp"
+#include "../include/bit.hpp"
 #include "../include/dynamic_array.hpp"
 #include "../include/exceptions.hpp"
 #include "../include/linked_list.hpp"
 #include "../include/list_sequence.hpp"
 #include "../include/sequence.hpp"
-#include "../include/bit.hpp"
 #include "assert.hpp"
 
 void test_exception_what()
@@ -600,4 +600,15 @@ void test_bit_proxy_exists()
     unsigned char byte = 0;
     BitProxy<> proxy(byte, 0);
     assert_func(true);
+}
+void test_bit_proxy_assign()
+{
+    unsigned char byte = 0;
+    BitProxy<> bit(byte, 3);
+    
+    bit = 1;
+    assert_func(byte == 8);
+    
+    bit = 0;
+    assert_func(byte == 0);
 }

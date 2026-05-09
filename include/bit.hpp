@@ -12,4 +12,16 @@ class BitProxy
     BitProxy(T& value, size_t index) : ref{value}, idx{index}
     {
     }
+    BitProxy& operator=(bool val)
+    {
+        if (val)
+        {
+            ref = ref | (static_cast<T>(1) << idx);
+        }
+        else
+        {
+            ref = ref & ~(static_cast<T>(1) << idx);
+        }
+        return *this;
+    }
 };

@@ -757,3 +757,13 @@ void test_bit_sequence_operator()
     seq[0] = Bit<>(5);
     assert_func(seq[0].GetValue() == 5);
 }
+void test_bit_sequence_or()
+{
+    Bit<> a[] = {Bit<>(0b1010), Bit<>(0b1100)};
+    Bit<> b[] = {Bit<>(0b1001), Bit<>(0b0101)};
+    BitSequence<> seqA(a);
+    BitSequence<> seqB(b);
+    BitSequence<> result = seqA | seqB;
+    assert_func(result[0].GetValue() == 0b1011);
+    assert_func(result[1].GetValue() == 0b1101);
+}

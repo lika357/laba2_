@@ -71,4 +71,15 @@ class BitSequence
     {
         return (*bits)[index];
     }
+    BitSequence<T> operator|(const BitSequence<T>& other) const
+    {
+        BitSequence<T> result;
+        for (size_t i = 0; i < bits->GetSize(); i++)
+        {
+            Bit<T> orResult = bits->Get(i) | other.bits->Get(i);
+            result.bits->Resize(i + 1);
+            result.bits->Set(i, orResult);
+        }
+        return result;
+    }
 };

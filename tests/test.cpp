@@ -777,3 +777,10 @@ void test_bit_sequence_xor()
     assert_func(result[0].GetValue() == 0b0011);
     assert_func(result[1].GetValue() == 0b1001);
 }
+void test_bit_sequence_not()
+{
+    Bit<> a[] = {Bit<>(0b1010)};
+    BitSequence<> seq(a);
+    BitSequence<> result = ~seq;
+    assert_func(result[0].GetValue() == 245);
+}

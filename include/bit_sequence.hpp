@@ -93,4 +93,15 @@ class BitSequence
         }
         return result;
     }
+    BitSequence<T> operator~() const
+    {
+        BitSequence<T> result;
+        for (size_t i = 0; i < bits->GetSize(); i++)
+        {
+            Bit<T> notResult = ~bits->Get(i);
+            result.bits->Resize(i + 1);
+            result.bits->Set(i, notResult);
+        }
+        return result;
+    }
 };

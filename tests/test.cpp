@@ -800,3 +800,11 @@ void test_bit_sequence_prepend()
     assert_func(seq.GetLength() == 3);
     assert_func(seq.GetFirst().GetValue() == 1);
 }
+void test_bit_sequence_insert()
+{
+    Bit<> items[] = {Bit<>(1), Bit<>(3)};
+    BitSequence<> seq(items);
+    seq.InsertAt(Bit<>(2), 1);
+    assert_func(seq.GetLength() == 3);
+    assert_func(seq[1].GetValue() == 2);
+}

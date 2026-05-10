@@ -85,6 +85,7 @@ int main()
     test_bit_sequence_get_last();
     test_bit_sequence_get();
     test_bit_sequence_length();
+    test_bit_sequence_and();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

@@ -736,3 +736,13 @@ void test_bit_sequence_length()
     BitSequence<> seq(items);
     assert_func(seq.GetLength() == 3);
 }
+void test_bit_sequence_and()
+{
+    Bit<> a[] = {Bit<>(0b1010), Bit<>(0b1100)};
+    Bit<> b[] = {Bit<>(0b1001), Bit<>(0b0101)};
+    BitSequence<> seqA(a);
+    BitSequence<> seqB(b);
+    BitSequence<> result = seqA & seqB;
+    assert_func(result.Get(0).GetValue() == 0b1000);
+    assert_func(result.Get(1).GetValue() == 0b0100);
+}

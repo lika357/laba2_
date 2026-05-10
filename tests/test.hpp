@@ -80,3 +80,4 @@ void test_bit_sequence_get_first();
 void test_bit_sequence_get_last();
 void test_bit_sequence_get();
 void test_bit_sequence_length();
+void test_bit_sequence_and();

@@ -818,3 +818,13 @@ void test_bit_sequence_subsequence()
     assert_func(sub->Get(1).GetValue() == 3);
     delete sub;
 }
+void test_bit_sequence_concat()
+{
+    Bit<> a[] = {Bit<>(1), Bit<>(2)};
+    Bit<> b[] = {Bit<>(3), Bit<>(4)};
+    BitSequence<> seqA(a);
+    BitSequence<> seqB(b);
+    seqA.Concat(&seqB);
+    assert_func(seqA.GetLength() == 4);
+    assert_func(seqA.GetLast().GetValue() == 4);
+}

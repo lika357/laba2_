@@ -4,7 +4,7 @@
 #include "sequence.hpp"
 
 template <typename T = unsigned char>
-class BitSequence
+class BitSequence : public Sequence<Bit<T>>
 {
    private:
     DynamicArray<Bit<T>>* bits;
@@ -27,7 +27,7 @@ class BitSequence
     {
         delete bits;
     }
-    Bit<T> GetFirst() const
+    Bit<T> GetFirst() const override
     {
         if (bits->GetSize() == 0)
         {
@@ -35,7 +35,7 @@ class BitSequence
         }
         return bits->Get(0);
     }
-    Bit<T> GetLast() const
+    Bit<T> GetLast() const override
     {
         if (bits->GetSize() == 0)
         {
@@ -43,11 +43,11 @@ class BitSequence
         }
         return bits->Get(bits->GetSize() - 1);
     }
-    Bit<T> Get(size_t index) const
+    Bit<T> Get(size_t index) const override
     {
         return bits->Get(index);
     }
-    size_t GetLength() const
+    size_t GetLength() const override
     {
         return bits->GetSize();
     }
@@ -104,7 +104,7 @@ class BitSequence
         }
         return result;
     }
-    Sequence<Bit<T>>* Append(Bit<T> item)
+    Sequence<Bit<T>>* Append(Bit<T> item) override
     {
         bits->Resize(bits->GetSize() + 1);
         bits->Set(bits->GetSize() - 1, item);
@@ -140,5 +140,13 @@ class BitSequence
             result->Append(bits->Get(i));
         }
         return result;
+    }
+    Sequence<Bit<T>>* Concat(Sequence<Bit<T>>* other) override
+    {
+        for (size_t i = 0; i < other->GetLength(); i++)
+        {
+            Append(other->Get(i));
+        }
+        return this;
     }
 };

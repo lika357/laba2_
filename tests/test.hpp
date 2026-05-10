@@ -83,3 +83,4 @@ void test_bit_sequence_length();
 void test_bit_sequence_and();
 void test_bit_sequence_operator();
 void test_bit_sequence_or();
+void test_bit_sequence_xor();

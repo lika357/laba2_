@@ -746,3 +746,14 @@ void test_bit_sequence_and()
     assert_func(result.Get(0).GetValue() == 0b1000);
     assert_func(result.Get(1).GetValue() == 0b0100);
 }
+void test_bit_sequence_operator()
+{
+    Bit<> items[] = {Bit<>(1), Bit<>(0), Bit<>(1)};
+    BitSequence<> seq(items);
+
+    assert_func(seq[0].GetValue() == 1);
+    assert_func(seq[1].GetValue() == 0);
+
+    seq[0] = Bit<>(5);
+    assert_func(seq[0].GetValue() == 5);
+}

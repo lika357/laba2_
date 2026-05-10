@@ -62,4 +62,13 @@ class BitSequence
         }
         return result;
     }
+    Bit<T>& operator[](size_t index)
+    {
+        return (*bits)[index];
+    }
+
+    const Bit<T>& operator[](size_t index) const
+    {
+        return (*bits)[index];
+    }
 };

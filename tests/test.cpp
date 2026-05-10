@@ -808,3 +808,13 @@ void test_bit_sequence_insert()
     assert_func(seq.GetLength() == 3);
     assert_func(seq[1].GetValue() == 2);
 }
+void test_bit_sequence_subsequence()
+{
+    Bit<> items[] = {Bit<>(1), Bit<>(2), Bit<>(3), Bit<>(4)};
+    BitSequence<> seq(items);
+    Sequence<Bit<>>* sub = seq.GetSubsequence(1, 2);
+    assert_func(sub->GetLength() == 2);
+    assert_func(sub->Get(0).GetValue() == 2);
+    assert_func(sub->Get(1).GetValue() == 3);
+    delete sub;
+}

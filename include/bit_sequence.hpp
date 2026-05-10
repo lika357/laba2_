@@ -132,4 +132,13 @@ class BitSequence
         bits->Set(index, item);
         return this;
     }
+    Sequence<Bit<T>>* GetSubsequence(size_t startIndex, size_t endIndex) const override
+    {
+        BitSequence<T>* result = new BitSequence<T>();
+        for (size_t i = startIndex; i <= endIndex; i++)
+        {
+            result->Append(bits->Get(i));
+        }
+        return result;
+    }
 };

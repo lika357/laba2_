@@ -88,3 +88,4 @@ void test_bit_sequence_not();
 void test_bit_sequence_append();
 void test_bit_sequence_prepend();
 void test_bit_sequence_insert();
+void test_bit_sequence_subsequence();

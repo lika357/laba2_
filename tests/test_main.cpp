@@ -90,6 +90,7 @@ int main()
     test_bit_sequence_or();
     test_bit_sequence_xor();
     test_bit_sequence_not();
+    test_bit_sequence_append();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

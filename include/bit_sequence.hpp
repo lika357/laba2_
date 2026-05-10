@@ -104,4 +104,10 @@ class BitSequence
         }
         return result;
     }
+    Sequence<Bit<T>>* Append(Bit<T> item)
+    {
+        bits->Resize(bits->GetSize() + 1);
+        bits->Set(bits->GetSize() - 1, item);
+        return this;
+    }
 };

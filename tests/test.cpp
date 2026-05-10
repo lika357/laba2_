@@ -784,3 +784,11 @@ void test_bit_sequence_not()
     BitSequence<> result = ~seq;
     assert_func(result[0].GetValue() == 245);
 }
+void test_bit_sequence_append()
+{
+    Bit<> items[] = {Bit<>(1), Bit<>(0)};
+    BitSequence<> seq(items);
+    seq.Append(Bit<>(1));
+    assert_func(seq.GetLength() == 3);
+    assert_func(seq.GetLast().GetValue() == 1);
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include "dynamic_array.hpp"
+#include "exceptions.hpp"
 #include "sequence.hpp"
 
 template <class T>
@@ -44,6 +45,10 @@ class ArraySequence : public Sequence<T>
     }
     T Get(size_t index) const override
     {
+        if (index >= items->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return items->Get(index);
     }
     size_t GetLength() const override
@@ -69,6 +74,10 @@ class ArraySequence : public Sequence<T>
     }
     Sequence<T>* InsertAt(T item, size_t index) override
     {
+        if (index > items->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         size_t oldSize = items->GetSize();
         items->Resize(oldSize + 1);
         for (size_t i = oldSize; i > index; i--)
@@ -80,6 +89,10 @@ class ArraySequence : public Sequence<T>
     }
     Sequence<T>* GetSubsequence(size_t startIndex, size_t endIndex) const override
     {
+        if (startIndex > endIndex || endIndex >= items->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         ArraySequence<T>* result = new ArraySequence<T>();
         for (size_t i = startIndex; i <= endIndex; i++)
         {
@@ -89,6 +102,10 @@ class ArraySequence : public Sequence<T>
     }
     Sequence<T>* Concat(Sequence<T>* other) override
     {
+        if (other == nullptr)
+        {
+            throw NullPointer{};
+        }
         for (size_t i = 0; i < other->GetLength(); i++)
         {
             Append(other->Get(i));
@@ -97,11 +114,19 @@ class ArraySequence : public Sequence<T>
     }
     T& operator[](size_t index)
     {
+        if (index >= items->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return (*items)[index];
     }
 
     const T& operator[](size_t index) const
     {
+        if (index >= items->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return (*items)[index];
     }
 };

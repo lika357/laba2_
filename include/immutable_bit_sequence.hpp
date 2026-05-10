@@ -34,6 +34,10 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
 
     const Bit<T>& operator[](size_t index) const
     {
+        if (index >= bits->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return (*bits)[index];
     }
 
@@ -57,6 +61,10 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
 
     Bit<T> Get(size_t index) const override
     {
+        if (index >= bits->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return bits->Get(index);
     }
 
@@ -67,6 +75,10 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
 
     Sequence<Bit<T>>* GetSubsequence(size_t start, size_t end) const override
     {
+        if (start > end || end >= bits->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         ImmutableBitSequence<T>* result = new ImmutableBitSequence<T>();
         for (size_t i = start; i <= end; i++)
         {
@@ -78,6 +90,10 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
 
     ImmutableBitSequence<T> operator&(const ImmutableBitSequence<T>& other) const
     {
+        if (bits->GetSize() != other.bits->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         ImmutableBitSequence<T> result;
         for (size_t i = 0; i < bits->GetSize(); i++)
         {
@@ -90,6 +106,10 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
 
     ImmutableBitSequence<T> operator|(const ImmutableBitSequence<T>& other) const
     {
+        if (bits->GetSize() != other.bits->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         ImmutableBitSequence<T> result;
         for (size_t i = 0; i < bits->GetSize(); i++)
         {
@@ -102,6 +122,10 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
 
     ImmutableBitSequence<T> operator^(const ImmutableBitSequence<T>& other) const
     {
+        if (bits->GetSize() != other.bits->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         ImmutableBitSequence<T> result;
         for (size_t i = 0; i < bits->GetSize(); i++)
         {
@@ -123,6 +147,7 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
         }
         return result;
     }
+
     Sequence<Bit<T>>* Append(Bit<T> item) override
     {
         ImmutableBitSequence<T>* copy = new ImmutableBitSequence<T>(*this);
@@ -146,6 +171,10 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
 
     Sequence<Bit<T>>* InsertAt(Bit<T> item, size_t index) override
     {
+        if (index > bits->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         ImmutableBitSequence<T>* copy = new ImmutableBitSequence<T>(*this);
         size_t oldSize = copy->bits->GetSize();
         copy->bits->Resize(oldSize + 1);
@@ -159,6 +188,10 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
 
     Sequence<Bit<T>>* Concat(Sequence<Bit<T>>* other) override
     {
+        if (other == nullptr)
+        {
+            throw NullPointer{};
+        }
         ImmutableBitSequence<T>* copy = new ImmutableBitSequence<T>(*this);
         for (size_t i = 0; i < other->GetLength(); i++)
         {

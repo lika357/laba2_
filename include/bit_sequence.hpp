@@ -1,6 +1,7 @@
 #pragma once
 #include "bit.hpp"
 #include "dynamic_array.hpp"
+#include "exceptions.hpp"
 #include "sequence.hpp"
 
 template <typename T = unsigned char>
@@ -45,6 +46,10 @@ class BitSequence : public Sequence<Bit<T>>
     }
     Bit<T> Get(size_t index) const override
     {
+        if (index >= bits->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return bits->Get(index);
     }
     size_t GetLength() const override
@@ -53,6 +58,10 @@ class BitSequence : public Sequence<Bit<T>>
     }
     BitSequence<T> operator&(const BitSequence<T>& other) const
     {
+        if (bits->GetSize() != other.bits->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         BitSequence<T> result;
         for (size_t i = 0; i < bits->GetSize(); i++)
         {
@@ -64,15 +73,27 @@ class BitSequence : public Sequence<Bit<T>>
     }
     Bit<T>& operator[](size_t index)
     {
+        if (index >= bits->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return (*bits)[index];
     }
 
     const Bit<T>& operator[](size_t index) const
     {
+        if (index >= bits->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return (*bits)[index];
     }
     BitSequence<T> operator|(const BitSequence<T>& other) const
     {
+        if (bits->GetSize() != other.bits->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         BitSequence<T> result;
         for (size_t i = 0; i < bits->GetSize(); i++)
         {
@@ -84,6 +105,10 @@ class BitSequence : public Sequence<Bit<T>>
     }
     BitSequence<T> operator^(const BitSequence<T>& other) const
     {
+        if (bits->GetSize() != other.bits->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         BitSequence<T> result;
         for (size_t i = 0; i < bits->GetSize(); i++)
         {
@@ -123,6 +148,10 @@ class BitSequence : public Sequence<Bit<T>>
     }
     Sequence<Bit<T>>* InsertAt(Bit<T> item, size_t index) override
     {
+        if (index > bits->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         size_t oldSize = bits->GetSize();
         bits->Resize(oldSize + 1);
         for (size_t i = oldSize; i > index; i--)
@@ -134,6 +163,10 @@ class BitSequence : public Sequence<Bit<T>>
     }
     Sequence<Bit<T>>* GetSubsequence(size_t startIndex, size_t endIndex) const override
     {
+        if (startIndex > endIndex || endIndex >= bits->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         BitSequence<T>* result = new BitSequence<T>();
         for (size_t i = startIndex; i <= endIndex; i++)
         {
@@ -143,6 +176,10 @@ class BitSequence : public Sequence<Bit<T>>
     }
     Sequence<Bit<T>>* Concat(Sequence<Bit<T>>* other) override
     {
+        if (other == nullptr)
+        {
+            throw NullPointer{};
+        }
         for (size_t i = 0; i < other->GetLength(); i++)
         {
             Append(other->Get(i));

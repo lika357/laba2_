@@ -51,6 +51,10 @@ class ImmutableArraySequence : public Sequence<T>
 
     T Get(size_t index) const override
     {
+        if (index >= items->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return items->Get(index);
     }
 
@@ -61,6 +65,10 @@ class ImmutableArraySequence : public Sequence<T>
 
     Sequence<T>* GetSubsequence(size_t startIndex, size_t endIndex) const override
     {
+        if (startIndex > endIndex || endIndex >= items->GetSize())
+        {
+            throw InvalidArgument{};
+        }
         ImmutableArraySequence<T>* result = new ImmutableArraySequence<T>();
         for (size_t i = startIndex; i <= endIndex; i++)
         {
@@ -71,8 +79,13 @@ class ImmutableArraySequence : public Sequence<T>
 
     const T& operator[](size_t index) const
     {
+        if (index >= items->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         return (*items)[index];
     }
+
     Sequence<T>* Append(T item) override
     {
         ImmutableArraySequence<T>* copy = new ImmutableArraySequence<T>(*this);
@@ -80,6 +93,7 @@ class ImmutableArraySequence : public Sequence<T>
         copy->items->Set(copy->items->GetSize() - 1, item);
         return copy;
     }
+
     Sequence<T>* Prepend(T item) override
     {
         ImmutableArraySequence<T>* copy = new ImmutableArraySequence<T>(*this);
@@ -95,6 +109,10 @@ class ImmutableArraySequence : public Sequence<T>
 
     Sequence<T>* InsertAt(T item, size_t index) override
     {
+        if (index > items->GetSize())
+        {
+            throw IndexOutOfRange{};
+        }
         ImmutableArraySequence<T>* copy = new ImmutableArraySequence<T>(*this);
         size_t oldSize = copy->items->GetSize();
         copy->items->Resize(oldSize + 1);
@@ -108,6 +126,10 @@ class ImmutableArraySequence : public Sequence<T>
 
     Sequence<T>* Concat(Sequence<T>* other) override
     {
+        if (other == nullptr)
+        {
+            throw NullPointer{};
+        }
         ImmutableArraySequence<T>* copy = new ImmutableArraySequence<T>(*this);
         for (size_t i = 0; i < other->GetLength(); i++)
         {

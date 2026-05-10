@@ -1,4 +1,5 @@
 #pragma once
+#include "exceptions.hpp"
 #include "linked_list.hpp"
 #include "sequence.hpp"
 
@@ -44,6 +45,10 @@ class ListSequence : public Sequence<T>
     }
     T Get(size_t index) const override
     {
+        if (index >= items->GetLength())
+        {
+            throw IndexOutOfRange{};
+        }
         return items->Get(index);
     }
     size_t GetLength() const override
@@ -67,6 +72,10 @@ class ListSequence : public Sequence<T>
     }
     Sequence<T>* GetSubsequence(size_t startIndex, size_t endIndex) const override
     {
+        if (startIndex > endIndex || endIndex >= items->GetLength())
+        {
+            throw InvalidArgument{};
+        }
         ListSequence<T>* result = new ListSequence<T>();
         for (size_t i = startIndex; i <= endIndex; i++)
         {
@@ -76,6 +85,10 @@ class ListSequence : public Sequence<T>
     }
     Sequence<T>* Concat(Sequence<T>* other) override
     {
+        if (other == nullptr)
+        {
+            throw NullPointer{};
+        }
         for (size_t i = 0; i < other->GetLength(); i++)
         {
             Append(other->Get(i));

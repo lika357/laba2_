@@ -51,6 +51,10 @@ class ImmutableListSequence : public Sequence<T>
 
     T Get(size_t index) const override
     {
+        if (index >= items->GetLength())
+        {
+            throw IndexOutOfRange{};
+        }
         return items->Get(index);
     }
 
@@ -61,6 +65,10 @@ class ImmutableListSequence : public Sequence<T>
 
     Sequence<T>* GetSubsequence(size_t startIndex, size_t endIndex) const override
     {
+        if (startIndex > endIndex || endIndex >= items->GetLength())
+        {
+            throw InvalidArgument{};
+        }
         ImmutableListSequence<T>* result = new ImmutableListSequence<T>();
         for (size_t i = startIndex; i <= endIndex; i++)
         {
@@ -71,8 +79,13 @@ class ImmutableListSequence : public Sequence<T>
 
     const T& operator[](size_t index) const
     {
+        if (index >= items->GetLength())
+        {
+            throw IndexOutOfRange{};
+        }
         return (*items)[index];
     }
+
     Sequence<T>* Append(T item) override
     {
         ImmutableListSequence<T>* copy = new ImmutableListSequence<T>(*this);
@@ -96,6 +109,10 @@ class ImmutableListSequence : public Sequence<T>
 
     Sequence<T>* Concat(Sequence<T>* other) override
     {
+        if (other == nullptr)
+        {
+            throw NullPointer{};
+        }
         ImmutableListSequence<T>* copy = new ImmutableListSequence<T>(*this);
         for (size_t i = 0; i < other->GetLength(); i++)
         {

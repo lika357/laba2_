@@ -93,3 +93,7 @@ void test_immutable_array_append();
 void test_immutable_array_prepend();
 void test_immutable_array_concat();
 void test_immutable_array_insert();
+void test_immutable_list_append();
+void test_immutable_list_prepend();
+void test_immutable_list_insert();
+void test_immutable_list_concat();

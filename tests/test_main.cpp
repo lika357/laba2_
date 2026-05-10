@@ -98,6 +98,10 @@ int main()
     test_immutable_array_prepend();
     test_immutable_array_concat();
     test_immutable_array_insert();
+    test_immutable_list_append();
+    test_immutable_list_prepend();
+    test_immutable_list_insert();
+    test_immutable_list_concat();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

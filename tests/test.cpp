@@ -4,6 +4,7 @@
 #include "../include/dynamic_array.hpp"
 #include "../include/exceptions.hpp"
 #include "../include/immutable_array_sequence.hpp"
+#include "../include/immutable_list_sequence.hpp"
 #include "../include/linked_list.hpp"
 #include "../include/list_sequence.hpp"
 #include "../include/sequence.hpp"
@@ -872,6 +873,50 @@ void test_immutable_array_concat()
     ImmutableArraySequence<int> seqB(b);
     Sequence<int>* result = seqA.Concat(&seqB);
 
+    assert_func(seqA.GetLength() == 2);
+    assert_func(result->GetLength() == 4);
+    delete result;
+}
+void test_immutable_list_append()
+{
+    int arr[] = {1, 2, 3};
+    ImmutableListSequence<int> seq(arr);
+    Sequence<int>* newSeq = seq.Append(4);
+
+    assert_func(seq.GetLength() == 3);
+    assert_func(newSeq->GetLength() == 4);
+    assert_func(newSeq->GetLast() == 4);
+    delete newSeq;
+}
+void test_immutable_list_prepend()
+{
+    int arr[] = {2, 3};
+    ImmutableListSequence<int> seq(arr);
+    Sequence<int>* newSeq = seq.Prepend(1);
+    assert_func(seq.GetLength() == 2);
+    assert_func(newSeq->GetLength() == 3);
+    assert_func(newSeq->GetFirst() == 1);
+    delete newSeq;
+}
+
+void test_immutable_list_insert()
+{
+    int arr[] = {1, 3};
+    ImmutableListSequence<int> seq(arr);
+    Sequence<int>* newSeq = seq.InsertAt(2, 1);
+    assert_func(seq.GetLength() == 2);
+    assert_func(newSeq->GetLength() == 3);
+    assert_func(newSeq->Get(1) == 2);
+    delete newSeq;
+}
+
+void test_immutable_list_concat()
+{
+    int a[] = {1, 2};
+    int b[] = {3, 4};
+    ImmutableListSequence<int> seqA(a);
+    ImmutableListSequence<int> seqB(b);
+    Sequence<int>* result = seqA.Concat(&seqB);
     assert_func(seqA.GetLength() == 2);
     assert_func(result->GetLength() == 4);
     delete result;

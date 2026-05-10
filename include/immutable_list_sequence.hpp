@@ -73,4 +73,34 @@ class ImmutableListSequence : public Sequence<T>
     {
         return (*items)[index];
     }
+    Sequence<T>* Append(T item) override
+    {
+        ImmutableListSequence<T>* copy = new ImmutableListSequence<T>(*this);
+        copy->items->Append(item);
+        return copy;
+    }
+
+    Sequence<T>* Prepend(T item) override
+    {
+        ImmutableListSequence<T>* copy = new ImmutableListSequence<T>(*this);
+        copy->items->Prepend(item);
+        return copy;
+    }
+
+    Sequence<T>* InsertAt(T item, size_t index) override
+    {
+        ImmutableListSequence<T>* copy = new ImmutableListSequence<T>(*this);
+        copy->items->InsertAt(item, index);
+        return copy;
+    }
+
+    Sequence<T>* Concat(Sequence<T>* other) override
+    {
+        ImmutableListSequence<T>* copy = new ImmutableListSequence<T>(*this);
+        for (size_t i = 0; i < other->GetLength(); i++)
+        {
+            copy->items->Append(other->Get(i));
+        }
+        return copy;
+    }
 };

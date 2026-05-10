@@ -69,13 +69,51 @@ class ImmutableArraySequence : public Sequence<T>
         return result;
     }
 
-    T& operator[](size_t index)
-    {
-        return (*items)[index];
-    }
-
     const T& operator[](size_t index) const
     {
         return (*items)[index];
+    }
+    Sequence<T>* Append(T item) override
+    {
+        ImmutableArraySequence<T>* copy = new ImmutableArraySequence<T>(*this);
+        copy->items->Resize(copy->items->GetSize() + 1);
+        copy->items->Set(copy->items->GetSize() - 1, item);
+        return copy;
+    }
+    Sequence<T>* Prepend(T item) override
+    {
+        ImmutableArraySequence<T>* copy = new ImmutableArraySequence<T>(*this);
+        size_t oldSize = copy->items->GetSize();
+        copy->items->Resize(oldSize + 1);
+        for (size_t i = oldSize; i > 0; i--)
+        {
+            copy->items->Set(i, copy->items->Get(i - 1));
+        }
+        copy->items->Set(0, item);
+        return copy;
+    }
+
+    Sequence<T>* InsertAt(T item, size_t index) override
+    {
+        ImmutableArraySequence<T>* copy = new ImmutableArraySequence<T>(*this);
+        size_t oldSize = copy->items->GetSize();
+        copy->items->Resize(oldSize + 1);
+        for (size_t i = oldSize; i > index; i--)
+        {
+            copy->items->Set(i, copy->items->Get(i - 1));
+        }
+        copy->items->Set(index, item);
+        return copy;
+    }
+
+    Sequence<T>* Concat(Sequence<T>* other) override
+    {
+        ImmutableArraySequence<T>* copy = new ImmutableArraySequence<T>(*this);
+        for (size_t i = 0; i < other->GetLength(); i++)
+        {
+            copy->items->Resize(copy->items->GetSize() + 1);
+            copy->items->Set(copy->items->GetSize() - 1, other->Get(i));
+        }
+        return copy;
     }
 };

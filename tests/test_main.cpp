@@ -94,6 +94,10 @@ int main()
     test_bit_sequence_prepend();
     test_bit_sequence_insert();
     test_bit_sequence_subsequence();
+    test_immutable_array_append();
+    test_immutable_array_prepend();
+    test_immutable_array_concat();
+    test_immutable_array_insert();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

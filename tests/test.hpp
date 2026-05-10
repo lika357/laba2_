@@ -89,3 +89,7 @@ void test_bit_sequence_append();
 void test_bit_sequence_prepend();
 void test_bit_sequence_insert();
 void test_bit_sequence_subsequence();
+void test_immutable_array_append();
+void test_immutable_array_prepend();
+void test_immutable_array_concat();
+void test_immutable_array_insert();

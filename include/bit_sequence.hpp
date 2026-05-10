@@ -110,4 +110,15 @@ class BitSequence
         bits->Set(bits->GetSize() - 1, item);
         return this;
     }
+    Sequence<Bit<T>>* Prepend(Bit<T> item) override
+    {
+        size_t oldSize = bits->GetSize();
+        bits->Resize(oldSize + 1);
+        for (size_t i = oldSize; i > 0; i--)
+        {
+            bits->Set(i, bits->Get(i - 1));
+        }
+        bits->Set(0, item);
+        return this;
+    }
 };

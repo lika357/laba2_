@@ -792,3 +792,11 @@ void test_bit_sequence_append()
     assert_func(seq.GetLength() == 3);
     assert_func(seq.GetLast().GetValue() == 1);
 }
+void test_bit_sequence_prepend()
+{
+    Bit<> items[] = {Bit<>(0), Bit<>(1)};
+    BitSequence<> seq(items);
+    seq.Prepend(Bit<>(1));
+    assert_func(seq.GetLength() == 3);
+    assert_func(seq.GetFirst().GetValue() == 1);
+}

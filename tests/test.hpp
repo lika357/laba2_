@@ -97,3 +97,7 @@ void test_immutable_list_append();
 void test_immutable_list_prepend();
 void test_immutable_list_insert();
 void test_immutable_list_concat();
+void test_immutable_bit_append();
+void test_immutable_bit_prepend();
+void test_immutable_bit_insert();
+void test_immutable_bit_concat();

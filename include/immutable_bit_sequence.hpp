@@ -1,8 +1,8 @@
 #pragma once
-#include "sequence.hpp"
-#include "dynamic_array.hpp"
 #include "bit.hpp"
+#include "dynamic_array.hpp"
 #include "exceptions.hpp"
+#include "sequence.hpp"
 
 template <typename T = unsigned char>
 class ImmutableBitSequence : public Sequence<Bit<T>>
@@ -122,5 +122,49 @@ class ImmutableBitSequence : public Sequence<Bit<T>>
             result.bits->Set(i, notResult);
         }
         return result;
+    }
+    Sequence<Bit<T>>* Append(Bit<T> item) override
+    {
+        ImmutableBitSequence<T>* copy = new ImmutableBitSequence<T>(*this);
+        copy->bits->Resize(copy->bits->GetSize() + 1);
+        copy->bits->Set(copy->bits->GetSize() - 1, item);
+        return copy;
+    }
+
+    Sequence<Bit<T>>* Prepend(Bit<T> item) override
+    {
+        ImmutableBitSequence<T>* copy = new ImmutableBitSequence<T>(*this);
+        size_t oldSize = copy->bits->GetSize();
+        copy->bits->Resize(oldSize + 1);
+        for (size_t i = oldSize; i > 0; i--)
+        {
+            copy->bits->Set(i, copy->bits->Get(i - 1));
+        }
+        copy->bits->Set(0, item);
+        return copy;
+    }
+
+    Sequence<Bit<T>>* InsertAt(Bit<T> item, size_t index) override
+    {
+        ImmutableBitSequence<T>* copy = new ImmutableBitSequence<T>(*this);
+        size_t oldSize = copy->bits->GetSize();
+        copy->bits->Resize(oldSize + 1);
+        for (size_t i = oldSize; i > index; i--)
+        {
+            copy->bits->Set(i, copy->bits->Get(i - 1));
+        }
+        copy->bits->Set(index, item);
+        return copy;
+    }
+
+    Sequence<Bit<T>>* Concat(Sequence<Bit<T>>* other) override
+    {
+        ImmutableBitSequence<T>* copy = new ImmutableBitSequence<T>(*this);
+        for (size_t i = 0; i < other->GetLength(); i++)
+        {
+            copy->bits->Resize(copy->bits->GetSize() + 1);
+            copy->bits->Set(copy->bits->GetSize() - 1, other->Get(i));
+        }
+        return copy;
     }
 };

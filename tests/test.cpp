@@ -4,6 +4,7 @@
 #include "../include/dynamic_array.hpp"
 #include "../include/exceptions.hpp"
 #include "../include/immutable_array_sequence.hpp"
+#include "../include/immutable_bit_sequence.hpp"
 #include "../include/immutable_list_sequence.hpp"
 #include "../include/linked_list.hpp"
 #include "../include/list_sequence.hpp"
@@ -917,6 +918,54 @@ void test_immutable_list_concat()
     ImmutableListSequence<int> seqA(a);
     ImmutableListSequence<int> seqB(b);
     Sequence<int>* result = seqA.Concat(&seqB);
+    assert_func(seqA.GetLength() == 2);
+    assert_func(result->GetLength() == 4);
+    delete result;
+}
+void test_immutable_bit_append()
+{
+    Bit<> items[] = {Bit<>(1), Bit<>(0)};
+    ImmutableBitSequence<> seq(items);
+    Sequence<Bit<>>* newSeq = seq.Append(Bit<>(1));
+
+    assert_func(seq.GetLength() == 2);
+    assert_func(newSeq->GetLength() == 3);
+    assert_func(newSeq->GetLast().GetValue() == 1);
+    delete newSeq;
+}
+
+void test_immutable_bit_prepend()
+{
+    Bit<> items[] = {Bit<>(0), Bit<>(1)};
+    ImmutableBitSequence<> seq(items);
+    Sequence<Bit<>>* newSeq = seq.Prepend(Bit<>(1));
+
+    assert_func(seq.GetLength() == 2);
+    assert_func(newSeq->GetLength() == 3);
+    assert_func(newSeq->GetFirst().GetValue() == 1);
+    delete newSeq;
+}
+
+void test_immutable_bit_insert()
+{
+    Bit<> items[] = {Bit<>(1), Bit<>(3)};
+    ImmutableBitSequence<> seq(items);
+    Sequence<Bit<>>* newSeq = seq.InsertAt(Bit<>(2), 1);
+
+    assert_func(seq.GetLength() == 2);
+    assert_func(newSeq->GetLength() == 3);
+    assert_func(newSeq->Get(1).GetValue() == 2);
+    delete newSeq;
+}
+
+void test_immutable_bit_concat()
+{
+    Bit<> a[] = {Bit<>(1), Bit<>(2)};
+    Bit<> b[] = {Bit<>(3), Bit<>(4)};
+    ImmutableBitSequence<> seqA(a);
+    ImmutableBitSequence<> seqB(b);
+    Sequence<Bit<>>* result = seqA.Concat(&seqB);
+
     assert_func(seqA.GetLength() == 2);
     assert_func(result->GetLength() == 4);
     delete result;

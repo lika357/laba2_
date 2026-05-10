@@ -102,6 +102,10 @@ int main()
     test_immutable_list_prepend();
     test_immutable_list_insert();
     test_immutable_list_concat();
+    test_immutable_bit_append();
+    test_immutable_bit_prepend();
+    test_immutable_bit_insert();
+    test_immutable_bit_concat();
 
     std::cout << "true " << get_true_tests() << "\n";
     std::cout << "false " << get_failed_tests() << "\n";

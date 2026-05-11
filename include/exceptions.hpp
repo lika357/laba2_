@@ -20,7 +20,9 @@ class Exceptions : public std::exception
 class IndexOutOfRange : public Exceptions
 {
    public:
-    IndexOutOfRange() : Exceptions{"Ошибка : индекс вышел за границы массива"}
+    IndexOutOfRange(size_t index = 0, size_t size = 0)
+        : Exceptions{"Ошибка : индекс " + std::to_string(index) + " вышел за границы " +
+                     std::to_string(size)}
     {
     }
 };
@@ -28,7 +30,7 @@ class IndexOutOfRange : public Exceptions
 class InvalidArgument : public Exceptions
 {
    public:
-    InvalidArgument() : Exceptions{"Ошибка : передан неверный аргумент"}
+    InvalidArgument() : Exceptions{"Ошибка : передан неверный аргумент , допустимое значение"}
     {
     }
 };

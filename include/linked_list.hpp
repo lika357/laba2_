@@ -10,17 +10,16 @@ class LinkedList
     struct Node
     {
         T value;
-        Node* next;
+        Node* next{nullptr};
         Node(const T& val) : value{val}, next{nullptr}
         {
         }
     };
 
-    Node* head;
-    size_t length;
+    Node* head{nullptr};
 
    public:
-    LinkedList() : head{nullptr}, length{0}
+    LinkedList()
     {
     }
     void Append(T item)
@@ -39,17 +38,16 @@ class LinkedList
             }
             current->next = newNode;
         }
-        length++;
     }
     template <size_t N>
-    LinkedList(T (&items)[N]) : head{nullptr}, length{0}
+    LinkedList(T (&items)[N])
     {
         for (size_t i = 0; i < N; i++)
         {
             Append(items[i]);
         }
     }
-    LinkedList(const LinkedList<T>& other) : head{nullptr}, length{0}
+    LinkedList(const LinkedList<T>& other)
     {
         Node* current = other.head;
         while (current != nullptr)
@@ -80,7 +78,6 @@ class LinkedList
             head = head->next;
             delete temp;
         }
-        length = 0;
 
         Node* current = other.head;
         while (current != nullptr)
@@ -93,9 +90,9 @@ class LinkedList
     }
     T& operator[](size_t index)
     {
-        if (index >= length)
+        if (index >= GetLength())
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, GetLength()};
         }
         Node* current = head;
         for (size_t i = 0; i < index; i++)
@@ -107,9 +104,9 @@ class LinkedList
 
     const T& operator[](size_t index) const
     {
-        if (index >= length)
+        if (index >= GetLength())
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, GetLength()};
         }
         Node* current = head;
         for (size_t i = 0; i < index; i++)
@@ -122,7 +119,7 @@ class LinkedList
     {
         if (head == nullptr)
         {
-            throw IndexOutOfRange{};
+            throw NullPointer{};
         }
         return head->value;
     }
@@ -130,7 +127,7 @@ class LinkedList
     {
         if (head == nullptr)
         {
-            throw IndexOutOfRange{};
+            throw NullPointer{};
         }
         Node* current = head;
         while (current->next != nullptr)
@@ -141,9 +138,9 @@ class LinkedList
     }
     T Get(size_t index) const
     {
-        if (index >= length)
+        if (index >= GetLength())
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, GetLength()};
         }
         Node* current = head;
         for (size_t i = 0; i < index; i++)
@@ -154,6 +151,8 @@ class LinkedList
     }
     size_t GetLength() const
     {
+        size_t length = 0;
+        for (auto tmp = head; tmp != nullptr; tmp = tmp->next, length++);
         return length;
     }
     void Prepend(T item)
@@ -161,13 +160,12 @@ class LinkedList
         Node* newNode = new Node(item);
         newNode->next = head;
         head = newNode;
-        length++;
     }
     void InsertAt(T item, size_t index)
     {
-        if (index > length)
+        if (index > GetLength())
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, GetLength()};
         }
 
         if (index == 0)
@@ -176,7 +174,7 @@ class LinkedList
             return;
         }
 
-        if (index == length)
+        if (index == GetLength())
         {
             Append(item);
             return;
@@ -190,11 +188,10 @@ class LinkedList
         }
         newNode->next = current->next;
         current->next = newNode;
-        length++;
     }
     LinkedList<T>* GetSubList(size_t from, size_t to) const
     {
-        if (from > to || to >= length)
+        if (from > to || to >= GetLength())
         {
             throw InvalidArgument{};
         }

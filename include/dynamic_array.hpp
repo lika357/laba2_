@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <cstring>
 
 #include "exceptions.hpp"
 
@@ -7,27 +8,22 @@ template <typename T>
 class DynamicArray
 {
    private:
-    T* data;
-    size_t size;
+    T* data{nullptr};
+    size_t size{0};
 
    public:
-    DynamicArray() : data{nullptr}, size{0}
+    DynamicArray()
     {
     }
 
-    DynamicArray(size_t count) : data{nullptr}, size{0}
+    DynamicArray(size_t count) : data{new T[count]}, size{count}
     {
-        size = count;
-        data = new T[size];
     }
 
     template <size_t N>
     DynamicArray(T (&items)[N]) : DynamicArray{N}
     {
-        for (size_t i = 0; i < size; i++)
-        {
-            data[i] = items[i];
-        }
+        std::memcpy(data, items, N * sizeof(T));
     }
     DynamicArray(const DynamicArray<T>& other) : DynamicArray{other.size}
     {
@@ -59,7 +55,7 @@ class DynamicArray
     {
         if (index >= size)
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, size};
         }
         return data[index];
     }
@@ -68,7 +64,7 @@ class DynamicArray
     {
         if (index >= size)
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, size};
         }
         return data[index];
     }
@@ -76,7 +72,7 @@ class DynamicArray
     {
         if (index >= size)
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, size};
         }
         return data[index];
     }
@@ -88,7 +84,7 @@ class DynamicArray
     {
         if (index >= size)
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, size};
         }
         data[index] = value;
     }

@@ -8,169 +8,162 @@ template <typename T = unsigned char>
 class BitSequence : public Sequence<Bit<T>>
 {
    private:
-    DynamicArray<Bit<T>>* bits;
+    DynamicArray<Bit<T>> bits;
 
    public:
-    BitSequence()
+    BitSequence() : bits{}
     {
-        bits = new DynamicArray<Bit<T>>();
     }
     template <size_t N>
-    BitSequence(Bit<T> (&arr)[N])
+    BitSequence(Bit<T> (&arr)[N]) : bits{arr}
     {
-        bits = new DynamicArray<Bit<T>>(arr);
     }
-    BitSequence(const BitSequence<T>& other)
+    BitSequence(const BitSequence<T>& other) : bits{other.bits}
     {
-        bits = new DynamicArray<Bit<T>>(*other.bits);
-    }
-    ~BitSequence()
-    {
-        delete bits;
     }
     Bit<T> GetFirst() const override
     {
-        if (bits->GetSize() == 0)
+        if (bits.GetSize() == 0)
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{0, bits.GetSize()};
         }
-        return bits->Get(0);
+        return bits.Get(0);
     }
     Bit<T> GetLast() const override
     {
-        if (bits->GetSize() == 0)
+        if (bits.GetSize() == 0)
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{0, bits.GetSize()};
         }
-        return bits->Get(bits->GetSize() - 1);
+        return bits.Get(bits.GetSize() - 1);
     }
     Bit<T> Get(size_t index) const override
     {
-        if (index >= bits->GetSize())
+        if (index >= bits.GetSize())
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, bits.GetSize()};
         }
-        return bits->Get(index);
+        return bits.Get(index);
     }
     size_t GetLength() const override
     {
-        return bits->GetSize();
+        return bits.GetSize();
     }
     BitSequence<T> operator&(const BitSequence<T>& other) const
     {
-        if (bits->GetSize() != other.bits->GetSize())
+        if (bits.GetSize() != other.bits.GetSize())
         {
             throw InvalidArgument{};
         }
         BitSequence<T> result;
-        for (size_t i = 0; i < bits->GetSize(); i++)
+        for (size_t i = 0; i < bits.GetSize(); i++)
         {
-            Bit<T> andResult = bits->Get(i) & other.bits->Get(i);
-            result.bits->Resize(i + 1);
-            result.bits->Set(i, andResult);
+            Bit<T> andResult = bits.Get(i) & other.bits.Get(i);
+            result.bits.Resize(i + 1);
+            result.bits.Set(i, andResult);
         }
         return result;
     }
     Bit<T>& operator[](size_t index)
     {
-        if (index >= bits->GetSize())
+        if (index >= bits.GetSize())
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, bits.GetSize()};
         }
-        return (*bits)[index];
+        return bits[index];
     }
 
     const Bit<T>& operator[](size_t index) const
     {
-        if (index >= bits->GetSize())
+        if (index >= bits.GetSize())
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, bits.GetSize()};
         }
-        return (*bits)[index];
+        return bits[index];
     }
     BitSequence<T> operator|(const BitSequence<T>& other) const
     {
-        if (bits->GetSize() != other.bits->GetSize())
+        if (bits.GetSize() != other.bits.GetSize())
         {
             throw InvalidArgument{};
         }
         BitSequence<T> result;
-        for (size_t i = 0; i < bits->GetSize(); i++)
+        for (size_t i = 0; i < bits.GetSize(); i++)
         {
-            Bit<T> orResult = bits->Get(i) | other.bits->Get(i);
-            result.bits->Resize(i + 1);
-            result.bits->Set(i, orResult);
+            Bit<T> orResult = bits.Get(i) | other.bits.Get(i);
+            result.bits.Resize(i + 1);
+            result.bits.Set(i, orResult);
         }
         return result;
     }
     BitSequence<T> operator^(const BitSequence<T>& other) const
     {
-        if (bits->GetSize() != other.bits->GetSize())
+        if (bits.GetSize() != other.bits.GetSize())
         {
             throw InvalidArgument{};
         }
         BitSequence<T> result;
-        for (size_t i = 0; i < bits->GetSize(); i++)
+        for (size_t i = 0; i < bits.GetSize(); i++)
         {
-            Bit<T> xorResult = bits->Get(i) ^ other.bits->Get(i);
-            result.bits->Resize(i + 1);
-            result.bits->Set(i, xorResult);
+            Bit<T> xorResult = bits.Get(i) ^ other.bits.Get(i);
+            result.bits.Resize(i + 1);
+            result.bits.Set(i, xorResult);
         }
         return result;
     }
     BitSequence<T> operator~() const
     {
         BitSequence<T> result;
-        for (size_t i = 0; i < bits->GetSize(); i++)
+        for (size_t i = 0; i < bits.GetSize(); i++)
         {
-            Bit<T> notResult = ~bits->Get(i);
-            result.bits->Resize(i + 1);
-            result.bits->Set(i, notResult);
+            Bit<T> notResult = ~bits.Get(i);
+            result.bits.Resize(i + 1);
+            result.bits.Set(i, notResult);
         }
         return result;
     }
     Sequence<Bit<T>>* Append(Bit<T> item) override
     {
-        bits->Resize(bits->GetSize() + 1);
-        bits->Set(bits->GetSize() - 1, item);
+        bits.Resize(bits.GetSize() + 1);
+        bits.Set(bits.GetSize() - 1, item);
         return this;
     }
     Sequence<Bit<T>>* Prepend(Bit<T> item) override
     {
-        size_t oldSize = bits->GetSize();
-        bits->Resize(oldSize + 1);
+        size_t oldSize = bits.GetSize();
+        bits.Resize(oldSize + 1);
         for (size_t i = oldSize; i > 0; i--)
         {
-            bits->Set(i, bits->Get(i - 1));
+            bits.Set(i, bits.Get(i - 1));
         }
-        bits->Set(0, item);
+        bits.Set(0, item);
         return this;
     }
     Sequence<Bit<T>>* InsertAt(Bit<T> item, size_t index) override
     {
-        if (index > bits->GetSize())
+        if (index > bits.GetSize())
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, bits.GetSize()};
         }
-        size_t oldSize = bits->GetSize();
-        bits->Resize(oldSize + 1);
+        size_t oldSize = bits.GetSize();
+        bits.Resize(oldSize + 1);
         for (size_t i = oldSize; i > index; i--)
         {
-            bits->Set(i, bits->Get(i - 1));
+            bits.Set(i, bits.Get(i - 1));
         }
-        bits->Set(index, item);
+        bits.Set(index, item);
         return this;
     }
     Sequence<Bit<T>>* GetSubsequence(size_t startIndex, size_t endIndex) const override
     {
-        if (startIndex > endIndex || endIndex >= bits->GetSize())
+        if (startIndex > endIndex || endIndex >= bits.GetSize())
         {
             throw InvalidArgument{};
         }
         BitSequence<T>* result = new BitSequence<T>();
         for (size_t i = startIndex; i <= endIndex; i++)
         {
-            result->Append(bits->Get(i));
+            result->Append(bits.Get(i));
         }
         return result;
     }

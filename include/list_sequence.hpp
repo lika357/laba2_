@@ -7,79 +7,72 @@ template <class T>
 class ListSequence : public Sequence<T>
 {
    private:
-    LinkedList<T>* items;
+    LinkedList<T> items;
 
    public:
-    ListSequence()
+    ListSequence() : items{}
     {
-        items = new LinkedList<T>();
     }
     template <size_t N>
-    ListSequence(T (&arr)[N])
+    ListSequence(T (&arr)[N]) : items{arr}
     {
-        items = new LinkedList<T>(arr);
     }
-    ListSequence(const ListSequence<T>& other)
+    ListSequence(const ListSequence<T>& other) : items{other.items}
     {
-        items = new LinkedList<T>(*other.items);
-    }
-    ~ListSequence()
-    {
-        delete items;
     }
     T GetFirst() const override
     {
-        if (items->GetLength() == 0)
+        if (items.GetLength() == 0)
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{0, items.GetLength()};
         }
-        return items->GetFirst();
+        return items.GetFirst();
     }
     T GetLast() const override
     {
-        if (items->GetLength() == 0)
+        if (items.GetLength() == 0)
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{0, items.GetLength()};
         }
-        return items->GetLast();
+        return items.GetLast();
     }
     T Get(size_t index) const override
     {
-        if (index >= items->GetLength())
+        if (index >= items.GetLength())
         {
-            throw IndexOutOfRange{};
+            throw IndexOutOfRange{index, items.GetLength()};
         }
-        return items->Get(index);
+        return items.Get(index);
     }
     size_t GetLength() const override
     {
-        return items->GetLength();
+        return items.GetLength();
     }
     Sequence<T>* Append(T item) override
     {
-        items->Append(item);
+        items.Append(item);
         return this;
     }
     Sequence<T>* Prepend(T item) override
     {
-        items->Prepend(item);
+        items.Prepend(item);
         return this;
     }
     Sequence<T>* InsertAt(T item, size_t index) override
     {
-        items->InsertAt(item, index);
+        items.InsertAt(item, index);
         return this;
     }
     Sequence<T>* GetSubsequence(size_t startIndex, size_t endIndex) const override
     {
-        if (startIndex > endIndex || endIndex >= items->GetLength())
+        if (startIndex > endIndex || endIndex >= items.GetLength())
         {
             throw InvalidArgument{};
         }
         ListSequence<T>* result = new ListSequence<T>();
         for (size_t i = startIndex; i <= endIndex; i++)
         {
-            result->Append(items->Get(i));
+            result->Append(items.Get(i));
         }
         return result;
     }

@@ -165,7 +165,7 @@ void test_dynamic_array_exceptions()
     {
         a.Get(5);
     }
-    catch (const Exceptions&)
+    catch (const IndexOutOfRange&)
     {
         caught = true;
     }
@@ -176,7 +176,7 @@ void test_dynamic_array_exceptions()
     {
         a.Set(5, 0);
     }
-    catch (const Exceptions&)
+    catch (const IndexOutOfRange&)
     {
         caught = true;
     }
@@ -187,7 +187,7 @@ void test_dynamic_array_exceptions()
     {
         a[5] = 10;
     }
-    catch (const Exceptions&)
+    catch (const IndexOutOfRange&)
     {
         caught = true;
     }
@@ -199,7 +199,7 @@ void test_dynamic_array_exceptions()
     {
         b[5];
     }
-    catch (const Exceptions&)
+    catch (const IndexOutOfRange&)
     {
         caught = true;
     }
